@@ -1,0 +1,63 @@
+<!--pages/reg/regs.wxml-->
+<text>注册{{department_index}}</text>
+
+
+<view class="container">
+  <view class="page-body">
+    <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
+    <view class="section">
+      <picker bindchange="bindTypePickerChange" value="{{type_index}}}" range="{{type_array}}">
+        <view class="picker">
+         账户类型 {{type_array[type_index]}}
+       </view>
+      </picker>
+    </view>
+
+    <view class="section">
+    <view hidden="{{type_index!=0}}">
+      <picker  bindchange="bindSchoolPickerChange" value="{{school_index}}}" range="{{school_array}}">
+        <view class="picker">
+         学院 {{school_array[school_index]}}
+       </view>
+      </picker>
+    </view>
+    <view hidden="{{type_index!=2}}">
+      <picker bindchange="bindDepartmentPickerChange" value="{{department_index}}}" range="{{department_array}}">
+        <view class="picker">
+         部门 {{department_array[department_index]}} {{department_index}}
+       </view>
+      </picker>
+    </view>
+    </view>
+    
+
+      <view class="page-section">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd" style="margin: 30rpx 0" >
+            <text wx:if="{{type_index!=0}}">管理人员口令</text>
+              <input wx:if="{{type_index!=0}}" class="weui-input" name="input" placeholder="人工确认后即可开通" />
+              <text>邮箱/手机</text>
+              <input class="weui-input" name="input" placeholder="不能与已有重复" />
+              <text>密码</text>
+              <input class="weui-input" name="input" placeholder="至少4位" />
+              <text>密码确认</text>
+              <input class="weui-input" name="input" placeholder="" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+      <view class="btn-area">
+        <button wx:if="{{errorflag==1}}" style="margin: 30rpx 0" type="default" disabled="true" formType="submit">账号已注册</button>
+        <button wx:elif="{{errorflag==2}}" style="margin: 30rpx 0" type="warn" disabled="true" formType="submit">密码不合法</button>
+        <button wx:elif="{{errorflag==3}}" style="margin: 30rpx 0" type="warn" disabled="true" formType="submit">密码不一致</button>
+        <button wx:elif="{{errorflag==4}}" style="margin: 30rpx 0" type="primary" disabled="true" formType="submit">已提交，待审核</button>
+        <button wx:else bind:tap="bindComfirmForm" style="margin: 30rpx 0" formType="submit">提交</button>
+        <button style="margin: 30rpx 0" formType="reset">Reset</button>
+      </view>
+    </form>
+  </view>
+
+</view>
