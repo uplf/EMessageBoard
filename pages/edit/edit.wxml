@@ -3,27 +3,23 @@
 <view>
 <text>welcome</text>
 <view>
-    <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">\
-    <text>基础信息</text>
-    <view class="input">
-        <text>主题</text>
-              <input class="weui-input" name="input" placeholder="输入主题" />
-    </view>
+    <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
 
+    <text>\n\n 流程确定\n</text>
     <view>
     <view class="section">
         <picker bindchange="mescate_change" value="{{mescate_index}}" range="{{mescate_array}}">
             处理方式: {{mescate_array[mescate_index]}}
         </picker>
     </view>
-
     <view>
         <picker wx:if="{{mescate_index==0}}" bindchange="department_change" value="{{department_index}}" range="{{department_array}}">
             发送部门: {{department_array[department_index]}}
         </picker>
     </view>
 
-    <view class="tiny_check">
+
+    <view class="tiny_check" class="check_window">预览
         <view wx:for="{{mes_data.solution}}" wx:key="item">
         <text>{{item.department}} </text>
             <text>{{department_array[item.department]}}->{{proc_unit_expl[item.cate_unit-1]}}</text>
@@ -32,7 +28,7 @@
     </view>
 
     </view>
-
+    <text>\n\n 留言选项\n</text>
     <view class="label">
     <checkbox-group>
         <label>
@@ -44,13 +40,31 @@
             允许用作学代会建议
             </checkbox>
             <view></view>
-            <checkbox  value="实名（使用本人认证的邮箱提交）"  checked="{{mes_data.public}}">
+            <checkbox  checked="{{mes_data.public}}">
             公开
             </checkbox>
+            
         </label>
     </checkbox-group>
     </view>
 
+    <text>\n\n 留言内容\n</text>
+    <view class="input">
+        <text>主题</text>
+              <input class="weui-input" name="input" placeholder="输入主题" />
+    </view>
+
+    <text>正文</text>
+              <textarea 	adjust-position='true'
+              maxlength='1000'
+              type="text"
+              class="input_main"
+              name="input" placeholder=""> </textarea>
+    <text>\n\n\n\n\n\n</text>
+    <button form-type="submit">确认</button>
+    <button form-type="reset">重置</button>
     </form>
 </view>
 </view>
+
+

@@ -26,7 +26,7 @@ Page({
       mescate_array:["直接投送给某部门","分配员小程序内转达相应部门","分配员其他平台代反馈","分配员反馈解决部门"],
       mescate_index:'',
       proc_unit_expl:["确认处理部门","处理与回复"],
-      department_array:['团委','后勤处','学校办公室','招生办','学院_宣传部'],
+      department_array:['本程序主管单位-权益部','团委','后勤处','学校办公室','招生办','学院_宣传部'],
       department_index:'',
       process_unit:{cate_unit:'',department:'',communicate:[],rate:'',status:'',display:"",finish_time:""},
       
@@ -58,10 +58,12 @@ Page({
               break
           }
           case '2':{
-            solu_tmp.push(this.assign_task(2,-1))
+            solu_tmp.push(this.assign_task(2,0))
+            break
           }
           case '3':{
-            solu_tmp.push(this.assign_task(2,-1))
+            solu_tmp.push(this.assign_task(2,0))
+            break
           }
       }
 
@@ -74,13 +76,19 @@ Page({
       var solu_tmp=this.data.mes_data.solution
       this.setData({department_index:e.detail.value})
       solu_tmp.splice(0,solu_tmp.length)
-      solu_tmp.push(this.assign_task(2,this.department_index))
+      solu_tmp.push(this.assign_task(2,this.data.department_index))
       this.setData({mes_data: {...
         this.data.mes_data,solution:solu_tmp}})
   },
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
+
+
+
   onLoad(options) {
 
   },

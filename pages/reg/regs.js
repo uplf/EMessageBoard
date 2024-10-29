@@ -1,6 +1,6 @@
 // pages/reg/regs.js
 
-
+//密文未搞定
 
 Page({
 
@@ -15,6 +15,7 @@ Page({
           userdepartment:'',
           
       },
+      kkk:'d',
       type_index:'',
       department_index:'',
       school_index:'',
@@ -27,6 +28,12 @@ Page({
       school_array:['电子与信息学院','数学学院','外国语学院']
 
   },
+
+
+
+
+  
+  
 
   bindTypePickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -71,7 +78,14 @@ Page({
     if(0){this.setData({errorflag:4})}
     
     this.setData({errorflag:this.data.errorflag+1})
+
+
+
+
+
   },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -127,4 +141,11 @@ Page({
   onShareAppMessage() {
 
   }
-})
+},
+
+
+
+
+
+
+)
