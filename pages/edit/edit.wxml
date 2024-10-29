@@ -5,11 +5,11 @@
 <view>
     <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
 
-    <text>\n\n 流程确定\n</text>
+    <text>\n\n 流程确定——\n</text>
     <view>
     <view class="section">
         <picker bindchange="mescate_change" value="{{mescate_index}}" range="{{mescate_array}}">
-            处理方式: {{mescate_array[mescate_index]}}
+            处理方式如下: {{mescate_array[mescate_index]}}
         </picker>
     </view>
     <view>
