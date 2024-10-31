@@ -1,8 +1,12 @@
 {
   "pages": [
-    "pages/detail/detail",
-    "pages/edit/edit",
     
+    "pages/edit/edit",
+<<<<<<< HEAD
+    
+=======
+    "pages/detail/detail",
+>>>>>>> 1ab4b44e24663f8076eedbc334aba39366cc4fad
     "pages/reg/regs",
     "pages/index/index",
     "pages/logs/logs",
