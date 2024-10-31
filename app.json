@@ -2,6 +2,7 @@
   "pages": [
     "pages/detail/detail",
     "pages/edit/edit",
+    
     "pages/reg/regs",
     "pages/index/index",
     "pages/logs/logs",
