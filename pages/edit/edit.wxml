@@ -8,13 +8,14 @@
     <text>\n\n 流程确定——\n</text>
     <view>
     <view class="section">
-        <picker bindchange="mescate_change" value="{{mescate_index}}" range="{{mescate_array}}">
-            处理方式如下: {{mescate_array[mescate_index]}}
+        <picker bindchange="mescate_change" value="{{mescate_index}}" range="{{GD.mescate_array}}">
+            处理方式如下: {{GD.mescate_array[mescate_index]}}
         </picker>
     </view>
     <view>
-        <picker wx:if="{{mescate_index==0}}" bindchange="department_change" value="{{department_index}}" range="{{department_array}}">
-            发送部门: {{department_array[department_index]}}
+
+        <picker wx:if="{{mescate_index==0}}" bindchange="department_change" value="{{department_index}}" range="{{GD.department_array}}">
+            发送部门: {{GD.department_array[department_index]}}
         </picker>
     </view>
 
@@ -22,7 +23,7 @@
     <view class="tiny_check" class="check_window">预览
         <view wx:for="{{mes_data.solution}}" wx:key="item">
         <text>{{item.department}} </text>
-            <text>{{department_array[item.department]}}->{{proc_unit_expl[item.cate_unit-1]}}</text>
+            <text>{{GD.department_array[item.department]}}->{{GD.proc_unit_expl[item.cate_unit-1]}}</text>
             <text></text>
         </view>
     </view>

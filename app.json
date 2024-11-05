@@ -1,12 +1,10 @@
 {
   "pages": [
     
-    "pages/edit/edit",
-<<<<<<< HEAD
-    
-=======
+      "pages/list/list",
     "pages/detail/detail",
->>>>>>> 1ab4b44e24663f8076eedbc334aba39366cc4fad
+    "pages/process/process",
+    "pages/edit/edit",
     "pages/reg/regs",
     "pages/index/index",
     "pages/logs/logs",

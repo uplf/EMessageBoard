@@ -6,25 +6,25 @@
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
     <view class="section">
-      <picker bindchange="bindTypePickerChange" value="{{type_index}}}" range="{{type_array}}">
+      <picker bindchange="bindTypePickerChange" value="{{type_index}}}" range="{{GD.type_array}}">
         <view class="picker">
-         账户类型 {{type_array[type_index]}}
+         账户类型 {{GD.type_array[type_index]}}
        </view>
       </picker>
     </view>
 
     <view class="section">
     <view hidden="{{type_index!=0}}">
-      <picker  bindchange="bindSchoolPickerChange" value="{{school_index}}}" range="{{school_array}}">
+      <picker  bindchange="bindSchoolPickerChange" value="{{school_index}}}" range="{{GD.school_array}}">
         <view class="picker">
-         学院 {{school_array[school_index]}}
+         学院 {{GD.school_array[school_index]}}
        </view>
       </picker>
     </view>
     <view hidden="{{type_index!=2}}">
       <picker bindchange="bindDepartmentPickerChange" value="{{department_index}}}" range="{{department_array}}">
         <view class="picker">
-         部门 {{department_array[department_index]}} {{department_index}}
+         部门 {{GD.department_array[department_index]}} {{department_index}}
        </view>
       </picker>
     </view>

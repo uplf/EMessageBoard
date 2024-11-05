@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      
       mes_data:{
       user_account:'',
       realname_info:{check:'true', email:""},
@@ -17,19 +18,17 @@ Page({
       solution:[],
       public:'false',
       reuse:'true',
+      communicate:[],
 
 
       mes_status:'',
       mes_time:'',
       mes_finish_time:'',
       },
-      mescate_array:["直接投送给某部门","分配员小程序内转达相应部门","分配员其他平台代反馈","分配员反馈解决部门"],
       mescate_index:'',
-      proc_unit_expl:["确认处理部门","处理与回复"],
-      department_array:['本程序主管单位-权益部','团委','后勤处','学校办公室','招生办','学院_宣传部'],
       department_index:'',
-      process_unit:{cate_unit:'',department:'',communicate:[],rate:'',status:'',display:"",finish_time:""},
-      
+      process_unit:{cate_unit:'',department:'',rate:'',status:'',display:"",finish_time:""},
+      GD:{ff:"y"},
   },
   //1,调整下一位 2,处理或回复
   assign_task:function(cate_unit_ind,depart_ind)
@@ -50,11 +49,7 @@ Page({
               break
           }
           case '1':{
-            console.log(  this.data.mes_data.solution.length)
-              console.log(  this.data.mes_data.solution.length)
-            
               solu_tmp.push(this.assign_task(1,0),this.assign_task(2,-1))
-
               break
           }
           case '2':{
@@ -73,6 +68,7 @@ Page({
 
   },
   department_change:function(e){
+      
       var solu_tmp=this.data.mes_data.solution
       this.setData({department_index:e.detail.value})
       solu_tmp.splice(0,solu_tmp.length)
@@ -90,7 +86,10 @@ Page({
 
 
   onLoad(options) {
-
+    var glo_data=getApp()
+    this.setData({GD:glo_data.globalData})
+    var tmp_list=glo_data.test_data_mes
+    this.setData({list,tmp_list})
   },
 
   /**

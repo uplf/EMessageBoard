@@ -1,5 +1,8 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<!--pages/process/process.wxml-->
+<text>pages/process/process.wxml</text>
+
+
+
 <text>\n info\n\n\n</text>
 <view class="divLine"></view>
 <view class="head">{{p.theme}}</view>
@@ -26,7 +29,7 @@
 <text class="head">解决方法:\n</text>
 <view wx:for="{{p.solution}}" wx:key="item">
     <view class="divLine_b"></view>
-    <text>处理事项: {{GD.proc_unit_expl[item.cate_unit-1]}}\n</text>
+    <text>处理事项: {{proc_unit_expl[item.cate_unit-1]}}\n</text>
     <text>状态: {{GD.unit_status_array[item.status]}}\n</text>
     <text wx:if="{{item.status}}!='0'">拟处理部门: {{GD.department_array[item.department]}}\n</text>
     <text wx:if="{{item.display}}">处理留言: {{item.display}}\n</text>
@@ -38,11 +41,6 @@
     </view>
 </view>
 <view class="divLine"></view>
-<text class="head">进入交流页面</text>
-<view wx:if="{{p.communicate[p.communicate.length-1]}}">*</view>
-<view class="divLine"></view>
-
-
 <text class="head">公开信息</text>
 <view class="divLine_b"></view>
 <text>允许用作学代会建议:\t\t {{p.reuse}}</text>

@@ -1,0 +1,91 @@
+<!--pages/list/list.wxml-->
+<text>pages/list/list.wxml</text>
+
+<view>功能栏:
+    <block>
+        <text wx:if="{{mode=='0'}}">公开留言</text>
+        <text wx:if="{{mode=='1'}}">我的留言</text>
+        <text wx:if="{{mode=='2'}}">处理留言</text>
+        <text wx:if="{{mode=='3'}}">学代会查看</text>
+    </block>
+    
+</view>
+<view class="divLine"></view>
+<view>
+    <view>
+    <view bind:tap="filter_change">
+        <view wx:if="{{unfold}}">筛选条件   点击折叠
+        
+        </view>
+        <view wx:else>筛选条件   点击展开</view>
+    </view>
+    <view wx:if="{{unfold}}">
+        <view class="divLine_b"></view>
+            <form catchsubmit="formSubmit" catchreset="formReset">
+                <picker mode="date" fields="month" value="{{filter_alter.time_timeL}}"
+                 start="2015-09-01" bindchange="bindDateChange" disabled="{{!filter_changeable.time}}">
+                    起始时间{{filter.time.timeL}}
+                </picker>
+                <picker mode="date" fields="month" value="{{filter_alter.time_timeL}}"
+                 start="2015-09-01" bindchange="bindDateChange" disabled="{{!filter_changeable.time}}">
+                    结束时间{{filter.time.timeL}}
+                </picker>
+
+                <picker value="{{filter_alter.status}}" range="{{GD.mes_status_array}}"
+                 disabled="{{!filter_changeable.status}}">
+                 留言状态
+                </picker>
+                
+                留言用户账号
+                <input disabled="{{!filter_changeable.appli}}">筛选用户</input>
+
+                留言编号查询
+                <input  disabled="{{!filter_changeable.num}}">留言编号</input>
+
+
+                <checkbox value="{{filter_alter.realname}}" >实名发布</checkbox>
+                <checkbox value="{{filter_alter.public}}">公开发布</checkbox>
+                <checkbox value="{{filter_alter.public}}">可被作为提案</checkbox>
+                <checkbox value="{{filter_alter.public}}">已发布</checkbox>
+
+
+                
+                <picker value="{{filter_alter.depart_status.department}}" range="{{GD.department_array}}">
+                    经过部门{{GD.department_array[filter_alter.department_status.department]}}
+                </picker>
+
+                
+                <picker value="{{filter_alter.depart_status.depart_status}}"  range="{{GD.unit_status_array}}">
+                    该部门的处理状态 {{GD.unit_status_array[filter_alter.department_status.depart_status]}}
+                </picker>
+
+
+                <button formType="submit">submit</button>
+                <button formType="reset">reset</button>
+            </form>
+        
+        </view>
+    </view>
+
+    <view class="divLine"></view>
+
+
+    <view>
+        <view wx:for="{{list}}" wx:key="item">
+        <text>No.{{item.num}}\t\t 申请时间:{{item.mes_time}}</text>
+        <view></view>
+        <text wx:if="{{item.realname}}">实名</text>
+        <view></view>
+        <text class="head">{{item.theme}}</text>
+        <view></view>
+        <text>总体进度:{{GD.mes_status_array[item.mes_status]}}</text>
+        <view></view>
+        <text if="{{item.cur_solution}}">到达部门:{{GD.department_array[item.cur_solution]}}</text>
+
+        <view class="divLine_b"></view>
+
+    </view>
+    </view>
+
+</view>
+

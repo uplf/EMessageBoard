@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      GD:{},
       reg_info:{
           username:'',
           password:'',
@@ -23,9 +24,7 @@ Page({
       Obj_type_arrey:[
           {id:0,name:"华工学生"},{id:1,name:"权益部工作人员"},{id:2,name:"部门工作人员"}
       ],
-      type_array:['华工学生','权益部工作人员','部门工作人员'],
-      department_array:['团委','后勤处','学校办公室','招生办','学院_宣传部'],
-      school_array:['电子与信息学院','数学学院','外国语学院']
+
 
   },
 
@@ -90,7 +89,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var glo_data=getApp()
+    this.setData({GD:glo_data.globalData})
   },
 
   /**
