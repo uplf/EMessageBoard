@@ -4,47 +4,60 @@
 <view class="divLine"></view>
 <view class="head">{{p.theme}}</view>
 <view class="divLine"></view>
-<text class="head">申请人信息</text>
-<view class="divLine_b"></view>
-<text>申请人账户:\t\t {{p.user_account}}</text>
-<view class="divLine_b"></view>
-<text>是否实名:\t\t {{p.realname_info.check}}</text>
-<view wx:if="{{p.realname_info.check}}">
+
+<text class="head" bind:tap="appli_fold_change">申请人信息\n</text>
+<view wx:if="{{appli_unfold}}">
     <view class="divLine_b"></view>
-    <text>实名邮箱:\t\t {{p.realname_info.email}}</text>
+    <text>申请人账户:\t\t {{p.user_account}}</text>
+    <view class="divLine_b"></view>
+    <text>是否实名:\t\t {{p.realname_info.check}}</text>
+    <view wx:if="{{p.realname_info.check}}">
+        <view class="divLine_b"></view>
+        <text>实名邮箱:\t\t {{p.realname_info.email}}</text>
+    </view>
+    <view class="divLine_b"></view>
+    <text>其他渠道联系方式:\t\t {{p.contract}}</text>
+    
 </view>
-<view class="divLine_b"></view>
-<text>其他渠道联系方式:\t\t {{p.contract}}</text>
 <view class="divLine"></view>
 <text class="head">留言详情</text>
+
 <view class="divLine_b"></view>
 <text>内容:\n</text>
 <textarea class="textarea_display" value="{{p.discription}}" disabled='true'></textarea>
 <view class="divLine_b"></view>
 <text>附件:\n</text>
 <view class="divLine"></view>
-<text class="head">解决方法:\n</text>
-<view wx:for="{{p.solution}}" wx:key="item">
-    <view class="divLine_b"></view>
-    <text>处理事项: {{GD.proc_unit_expl[item.cate_unit-1]}}\n</text>
-    <text>状态: {{GD.unit_status_array[item.status]}}\n</text>
-    <text wx:if="{{item.status}}!='0'">拟处理部门: {{GD.department_array[item.department]}}\n</text>
-    <text wx:if="{{item.display}}">处理留言: {{item.display}}\n</text>
-    <text wx:if="{{item.clerk!='0'}}">处理员:\t{{item.clerk}}</text>
-    <view wx:if="{{(item.status=='3' || item.status=='5' ||item.status=='7')&& (p.status=='3'||p.status=='4')}}"  >
-        <text>评价</text>
-        <text wx:if="{{item.rate}}">未评价</text>
-        <text wx:else>{{item.rate}}</text>
+
+
+<text class="head" bind:tap="solu_fold_change">解决方法:\n</text>
+<view>
+    <view wx:for="{{p.solution}}" wx:key="item">
+        <view class="divLine_b"></view>
+        <view wx:if="{{(solu_unfold)||(item.status==2)}}">
+        <text>处理事项: {{GD.proc_unit_expl[item.cate_unit-1]}}\n</text>
+        <text>状态: {{GD.unit_status_array[item.status]}}\n</text>
+        <text wx:if="{{item.status}}!='0'">拟处理部门: {{GD.department_array[item.department]}}\n</text>
+        <text wx:if="{{item.display}}">处理留言: {{item.display}}\n</text>
+        <text wx:if="{{item.clerk!='0'}}">处理员:\t{{item.clerk}}</text>
+        <view wx:if="{{(item.status=='3' || item.status=='5' ||item.status=='7')&& (p.status=='3'||p.status=='4')}}"  >
+            <text>评价</text>
+            <text wx:if="{{item.rate}}">未评价</text>
+            <text wx:else>{{item.rate}}</text>
+        </view>
+        </view>
     </view>
 </view>
 <view class="divLine"></view>
 <text class="head">进入交流页面</text>
-<view wx:if="{{p.communicate[p.communicate.length-1]}}">*</view>
+<text wx:if="{{p.communicate[p.communicate.length-1]}}">*</text>
 <view class="divLine"></view>
 
 
-<text class="head">公开信息</text>
-<view class="divLine_b"></view>
-<text>允许用作学代会建议:\t\t {{p.reuse}}</text>
-<view class="divLine_b"></view>
-<text>允许公开:\t\t {{p.public}}</text>
+<text class="head" bind:tap="public_fold_change">公开信息</text>
+    <view wx:if="{{public_unfold}}">
+    <view class="divLine_b"></view>
+    <text>允许用作学代会建议:\t\t {{p.reuse}}</text>
+    <view class="divLine_b"></view>
+    <text>允许公开:\t\t {{p.public}}</text>
+</view>

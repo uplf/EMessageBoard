@@ -6,6 +6,9 @@ Page({
    */
   data: {
       GD:{},
+      appli_unfold:'false',
+      solu_unfold:'false',
+      public_unfold:'false',
     p:{
         num:'',
         user_account:"",
@@ -133,5 +136,19 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  appli_fold_change(){
+      var x=!this.data.appli_unfold
+        this.setData({appli_unfold:x})
+  },
+  solu_fold_change(){
+      var x=!this.data.solu_unfold
+      this.setData({solu_unfold:x})
+  },
+  public_fold_change(){
+        var x=!this.data.public_unfold
+        this.setData({public_unfold:x})
   }
 })
+
+console.log("12231231231")

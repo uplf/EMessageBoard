@@ -18,7 +18,13 @@
 .textarea_display{
     border-style: solid;
     border-color: darkblue;
-    height: 250px;
-    width:350px;
+    height: 550 px;
+    width:650 px;
     white-space: wrap;
+}
+
+.test{
+    border-style:solid;
+    height:300 rpx;
+    width:250 rpx;
 }
