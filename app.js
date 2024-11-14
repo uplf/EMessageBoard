@@ -14,6 +14,7 @@ App({
     })
   },
   globalData: {
+
     userInfo: null,
     mescate_array:["直接投送给某部门","分配员小程序内转达相应部门","分配员其他平台代反馈","分配员反馈解决部门"],
     proc_unit_expl:["确认处理部门","处理与回复"],

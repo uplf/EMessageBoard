@@ -22,7 +22,7 @@
       </picker>
     </view>
     <view hidden="{{type_index!=2}}">
-      <picker bindchange="bindDepartmentPickerChange" value="{{department_index}}}" range="{{department_array}}">
+      <picker bindchange="bindDepartmentPickerChange" value="{{department_index}}}" range="{{GD.department_array}}">
         <view class="picker">
          部门 {{GD.department_array[department_index]}} {{department_index}}
        </view>
@@ -65,7 +65,7 @@
         <button wx:elif="{{errorflag==3}}" style="margin: 30rpx 0" type="warn" disabled="true" formType="submit">密码不一致</button>
         <button wx:elif="{{errorflag==4}}" style="margin: 30rpx 0" type="primary" disabled="true" formType="submit">已提交，待审核</button>
         <button wx:else bind:tap="bindComfirmForm" style="margin: 30rpx 0" formType="submit">提交</button>
-        <button style="margin: 30rpx 0" formType="reset">Reset</button>
+        <button bind:tap="trial" style="margin: 30rpx 0" formType="reset">Reset</button>
       </view>
     </form>
   </view>

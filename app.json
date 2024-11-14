@@ -1,12 +1,15 @@
 {
   "pages": [
+    "pages/reg/regs",
+    "pages/list/list",
+    "pages/menu/user_menu",
+    "pages/menu/admin_menu",
+    
     "pages/index/index",
     "pages/detail/detail",
-    "pages/list/list",
-    
     "pages/process/process",
     "pages/edit/edit",
-    "pages/reg/regs",
+
     
     "pages/logs/logs",
     "pages/home/home"

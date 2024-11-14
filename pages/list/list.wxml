@@ -7,6 +7,7 @@
         <text wx:if="{{mode=='1'}}">我的留言</text>
         <text wx:if="{{mode=='2'}}">处理留言</text>
         <text wx:if="{{mode=='3'}}">学代会查看</text>
+        <text wx:if="{{mode=='4'}}">调试</text>
     </block>
     
 </view>
@@ -22,46 +23,47 @@
     <view wx:if="{{unfold}}">
         <view class="divLine_b"></view>
             <form catchsubmit="formSubmit" catchreset="formReset">
-                <picker mode="date" fields="month" value="{{filter_alter.time_timeL}}"
-                 start="2015-09-01" bindchange="bindDateChange" disabled="{{!filter_changeable.time}}">
-                    起始时间{{filter.time.timeL}}
+                <picker mode="date" bindchange="timeL_change" fields="month" value="{{filter_alter.time_timeL}}"
+                 start="2015-09-01"  disabled="{{filter_changeable.time=='false'}}">
+                 起始时间   {{filter_alter.time.timeL}}
                 </picker>
-                <picker mode="date" fields="month" value="{{filter_alter.time_timeL}}"
-                 start="2015-09-01" bindchange="bindDateChange" disabled="{{!filter_changeable.time}}">
-                    结束时间{{filter.time.timeL}}
+                <picker mode="date" bindchange="timeH_change" fields="month" value="{{filter_alter.time_timeL}}"
+                 start="2015-09-01"  disabled="{{filter_changeable.time=='false'}}">
+                    结束时间   {{filter_alter.time.timeH}}
                 </picker>
 
-                <picker value="{{filter_alter.status}}" range="{{GD.mes_status_array}}"
-                 disabled="{{!filter_changeable.status}}">
-                 留言状态
+                <picker bindchange="status_Change" value="{{filter_alter.status}}" range="{{GD.mes_status_array}}"
+                 disabled="{{filter_changeable.status=='false'}}">
+                 留言状态   {{GD.mes_status_array[filter_alter.status]}}
                 </picker>
                 
                 留言用户账号
-                <input disabled="{{!filter_changeable.appli}}">筛选用户</input>
+                <input value="{{filter_alter.appli}}" disabled="{{filter_changeable.appli=='false'}}">筛选用户</input>
 
                 留言编号查询
-                <input  disabled="{{!filter_changeable.num}}">留言编号</input>
+                <input value="{{filter_alter.num}}" disabled="{{filter_changeable.num=='false'}}">留言编号</input>
 
 
-                <checkbox value="{{filter_alter.realname}}" >实名发布</checkbox>
-                <checkbox value="{{filter_alter.public}}">公开发布</checkbox>
-                <checkbox value="{{filter_alter.public}}">可被作为提案</checkbox>
-                <checkbox value="{{filter_alter.public}}">已发布</checkbox>
+                <checkbox checked="{{filter_alter.realname}}" disabled="{{filter_changeable.realname=='false'}}" >实名发布</checkbox>
+                <checkbox checked="{{filter_alter.public}}" disabled="{{filter_changeable.public=='false'}}">公开发布</checkbox>
+                <checkbox checked="{{filter_alter.reuse}}" disabled="{{filter_changeable.reuse=='false'}}">可被作为提案</checkbox>
+                <checkbox checked="{{filter_alter.issue}}" disabled="{{filter_changeable.issue=='false'}}">已发布</checkbox>
 
 
                 
-                <picker value="{{filter_alter.depart_status.department}}" range="{{GD.department_array}}">
-                    经过部门{{GD.department_array[filter_alter.department_status.department]}}
+                <picker bindchange="departChange" value="{{filter_alter.depart_status.department}}" range="{{GD.department_array}}" disabled="{{filter_changeable.depart_status.department=='false'}}">
+                    经过部门        {{GD.department_array[filter_alter.department_status.department]}}
                 </picker>
 
                 
-                <picker value="{{filter_alter.depart_status.depart_status}}"  range="{{GD.unit_status_array}}">
-                    该部门的处理状态 {{GD.unit_status_array[filter_alter.department_status.depart_status]}}
+                <picker bindchange="depart_status_Change" value="{{filter_alter.depart_status.depart_status}}"  range="{{GD.unit_status_array}}" 
+                disabled="{{filter_changeable.depart_status.depart_status=='false'}}">
+                    该部门的处理状态   {{GD.unit_status_array[filter_alter.department_status.depart_status]}}
                 </picker>
 
 
-                <button formType="submit">submit</button>
-                <button formType="reset">reset</button>
+                <button bind:tap="submit_handler" formType="submit">submit</button>
+                <button bind:tap="AutoFilterSetup">reset</button>
             </form>
         
         </view>

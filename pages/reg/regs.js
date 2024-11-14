@@ -128,6 +128,14 @@ Page({
 
   },
 
+  trial(){
+    wx.openAppAuthorizeSetting({
+        success (res) {
+          console.log(res)
+        }
+      })
+      console.log("finish")
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
