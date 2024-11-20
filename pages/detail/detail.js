@@ -9,6 +9,7 @@ Page({
       appli_unfold:'false',
       solu_unfold:'false',
       public_unfold:'false',
+      mode:'1',//1本人查看，2仅展示，3处理人查看
     p:{
         num:'',
         user_account:"",
@@ -25,7 +26,7 @@ Page({
         communicate:[],
   
   
-        mes_status:'',
+        mes_status:'1',
         mes_time:'',
         mes_finish_time:'',
         },
@@ -43,9 +44,10 @@ Page({
   onLoad(e) {
     var glo_data=getApp()
     this.setData({GD:glo_data.globalData})
-
+    this.setData({p:glo_data.globalData.test_data_mes[1]})
+/** 
     var p_tmp=this.data.p   
-    p_tmp.user_account="aloumx"
+    p_tmp.user_account="username"
     p_tmp.realname_info.check="true"
     p_tmp.realname_info.email="trial@mail.scut.edu.cn"
     p_tmp.contract="trial@mail.scut.edu.cn"
@@ -57,7 +59,7 @@ Page({
     q.department='1'
     q.status='1'
     q.clerk="操作员1"
-    q.display="man what can i say"
+    q.display="处理留言"
     p_tmp.solution.push(q)
     q2.cate_unit='2'
     q2.department='0'
@@ -86,7 +88,7 @@ Page({
 
     this.setData({p:p_tmp})
     console.log("done")
-
+*/
   },
 
   /**

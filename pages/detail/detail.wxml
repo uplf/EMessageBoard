@@ -61,3 +61,26 @@
     <view class="divLine_b"></view>
     <text>允许公开:\t\t {{p.public}}</text>
 </view>
+
+<view wx:if="{{mode=='1'}}">
+<button wx:if="{{p.mes_status=='1'}}">发布</button>
+<view wx:if="{{p.mes_status=='2'}}">
+    <button>暂停</button>
+    <button>中止</button>
+</view>
+<button wx:if="{{p.mes_status=='3'}}">删除</button>
+<view wx:if="{{p.mes_status=='4'}}">
+    <button>继续</button>
+    <button>中止</button>
+</view>
+<view wx:if="{{p.mes_status=='5'}}">
+    <button>满意</button>
+    <button>不满意</button>
+</view>
+</view>
+
+
+<view wx:if="{{mode=='3'&&p.mes_status=='2'}}">
+    <button>进入交流页面</button>
+    <button></button>
+</view>
