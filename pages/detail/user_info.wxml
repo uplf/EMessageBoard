@@ -1,0 +1,45 @@
+<!--pages/detail/user_info.wxml-->
+<text>pages/detail/user_info.wxml</text>
+<view>
+<view>
+    <view wx:if="{{checkee=='1'}}">用户资料</view>
+    <view wx:if="{{checkee=='2'}}">管理员资料</view>
+    <view wx:if="{{checkee=='3'}}">维护员资料</view>
+</view>
+
+    <view class="head">
+        {{display_user.user_account}} 
+        <text class="normal_text" wx:if="{{display_user.avail=='true'}}">正常</text>
+        <text class="warning_text" wx:if="{{display_user.avail=='false'}}">停用</text>
+    </view>
+    <view class="divLine"></view>
+    <view>小程序用户编号: {{display_user.usernum}}</view>
+    <view class="divLine_b"></view>
+    <view>用户账号: {{display_user.num}}</view>
+    <view class="divLine"></view>
+    <view wx:if="{{checkee=='1'}}">
+        <view wx:if="{{display_user.realname_info.check=='true'}}">实名信息： {{display_user.realname_info.email}}</view>
+        <view wx:if="{{display_user.realname_info.check=='false'}}">未实名
+            <text wx:if="{{checker=='1'}}" bind:tap="to_authent">点击此处跳转认证界面</text>
+        </view>
+    </view>
+
+    <view wx:if="{{checkee=='2'}}">所属部门 {{GD.department_array[display_user.depart_num]}}</view>
+
+    <view class="divLine_b"></view>
+    <view>联系方式：{{display_user.contract}}
+        <text wx:if="{{checker=='1'}}" class="head">\t 修改</text>
+    </view>
+    <view class="divLine"></view>
+</view>
+<text>\n\n</text>
+<view>
+
+    <view wx:if="{{checker=='2'}}">
+        <button wx:if="{{checkee=='1'}}">查看公开留言</button>
+        <button wx:if="{{checkee=='2'}}">查看满意度统计</button>
+        <text>\n</text>
+        <button wx:if="{{display_user.avail=='false'}}" type="primary">启用账号</button>
+        <button wx:if="{{display_user.avail=='true'}}" type="warn">停用账号</button>
+    </view>
+</view> 

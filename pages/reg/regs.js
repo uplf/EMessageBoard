@@ -78,10 +78,6 @@ Page({
     
     this.setData({errorflag:this.data.errorflag+1})
 
-
-
-
-
   },
 
 
@@ -89,6 +85,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+      console.log(options.id)
     var glo_data=getApp()
     this.setData({GD:glo_data.globalData})
   },
@@ -128,14 +125,7 @@ Page({
 
   },
 
-  trial(){
-    wx.openAppAuthorizeSetting({
-        success (res) {
-          console.log(res)
-        }
-      })
-      console.log("finish")
-  },
+
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -148,12 +138,10 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  bindComfirmForm(){
+      //登记
+    wx.navigateBack({})
   }
 },
-
-
-
-
-
-
 )

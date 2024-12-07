@@ -1,17 +1,14 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/menu/user_menu",
+    "pages/menu/admin_menu",
+    "pages/detail/user_info",
     "pages/detail/detail",
     "pages/reg/regs",
     "pages/list/list",
-    "pages/menu/user_menu",
-    "pages/menu/admin_menu",
-    
-    "pages/index/index",
-
     "pages/process/process",
     "pages/edit/edit",
-
-    
     "pages/logs/logs",
     "pages/home/home"
     

@@ -15,6 +15,20 @@ App({
   },
   globalData: {
 
+
+    test_union_id:'',
+    CUR_MES:{},
+    CUR_USER:{
+        user_type:'',
+        num:'',
+        usernum:'', //union_id
+        user_account:"",    //name
+        realname_info:{check:'', email:""},
+        contract:"",
+        avail:'',
+        depart_num:''
+    },
+
     userInfo: null,
     mescate_array:["直接投送给某部门","分配员小程序内转达相应部门","分配员其他平台代反馈","分配员反馈解决部门"],
     proc_unit_expl:["确认处理部门","处理与回复"],
@@ -23,6 +37,17 @@ App({
     school_array:['电子与信息学院','数学学院','外国语学院'],
     unit_status_array:['等待确定','等待处理','正在处理','处理完成','处理遇到问题(已重新分配)','处理遇到问题(请补充信息/沟通)','处理失败'],//固定
     mes_status_array:['未发布','正在处理','中止进程','暂停进程','待评价','完成'],
+
+    user_demo:{
+        user_type:'3',
+        num:'100812',
+        usernum:'wx_101391',
+        user_account:"accountname",
+        realname_info:{check:'false', email:"123@.edu.cn"},
+        contract:"121317456@qq.com",
+        avail:'true',
+        depart_num:'3'
+    },
 
 
     test_data_mes:[
@@ -54,7 +79,7 @@ App({
                 num:'100812',
                 usernum:'wx_101391',
                 user_account:"accountname",
-                realname_info:{check:'false', email:""},
+                realname_info:{check:'true', email:"12212"},
                 contract:"121317456@qq.com",
           
                 theme:"这里是问题的主题2",
@@ -69,7 +94,7 @@ App({
                 {senderdep:"0",sendername:"处理员2",info:"我是处理员2",user_read:'false',attachment:[],time:"2024-5-9-7:20"}],
                 cur_solution:'2',
 
-                mes_status:'1',
+                mes_status:'2',
                 mes_time:'2024-5-8-12:00',
                 mes_finish_time:'',
                 

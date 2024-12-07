@@ -1,60 +1,50 @@
-// index.js
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: '',
-    },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname'),
-    account_error:2,
-  },
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail
-    const { nickName } = this.data.userInfo
-    this.setData({
-      "userInfo.avatarUrl": avatarUrl,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
-  },
-  onInputChange(e) {
-    const nickName = e.detail.value
-    const { avatarUrl } = this.data.userInfo
-    this.setData({
-      "userInfo.nickName": nickName,
-      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
-    })
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
-  },
-  handleTap_login(e){
-      console.log("manmanmna")
-  },
-  handleTap_regA(e){
-    console.log("ewewew")
-  },
-  handleTap_regB(e){
-     console.log("eeeeee")
+      GD:{},
+    status_login:''
   },
 
+
+onLoad(){
+    var glo_data=getApp()
+    this.setData({GD:glo_data.globalData})
+},
+
+  login_appli(e) {
+      var status='1'       //0失败 1用户登录 2管理员登录 3维护员登录 4注册 5拒绝登录
+      //获取unionid
+      status='0'
+      //查找用户库
+      
+        status='3'
+        const app=getApp()
+        app.globalData.CUR_USER=app.globalData.user_demo;
+        this.setData({status_login:status})
+        switch (status)
+        {
+            case '0':
+            case '5':return;
+            case '2':
+            case '3': 
+                this.Navigate_Admin();
+                break
+            case '1': 
+                this.Navigate_User();
+                break;
+            case '4': this.Navigate_Reg('12421sdf12');
+        }
+
+
+  },
+  
+  Navigate_User: function(){
+    wx.navigateTo({url: '/pages/menu/user_menu'});
+  },
+  Navigate_Admin: function(){
+    wx.navigateTo({url: '/pages/menu/admin_menu'});
+  },
+  Navigate_Reg: function(ID){
+    wx.navigateTo({url: '/pages/reg/regs?id='+ID});
+  },
 })

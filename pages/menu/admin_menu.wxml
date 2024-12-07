@@ -1,2 +1,15 @@
 <!--pages/menu/admin_menu.wxml-->
 <text>pages/menu/admin_menu.wxml</text>
+
+<view wx:if="{{GD.CUR_USER.user_type=='3'}}">
+    <view bind:tap="ViewGloAppl">查看全部留言</view>
+    <view bind:tap="HandleDepart">管理部门</view>
+    <view bind:tap="HandleUser">管理用户</view>
+    <view bind:tap="HandleDepartUser">管理部门用户注册</view>
+</view>
+
+<view bind:tap="ViewMyAppl">我的待处理</view>
+<view bind:tap="ViewMyCom">我的总评价</view>
+<view bind:tap="ViewMyPreAppl">我的历史处理</view>
+<view bind:tap="UserInfo">我</view>
+<view bind:tap="Exit">注销</view>

@@ -2,8 +2,8 @@
 <text>pages/menu/user_menu.wxml</text>
 
 <text>欢迎使用\n\n</text>
-<view>用户信息</view>
-<view>写留言</view>
-<view>我的留言</view>
-<view>本校认证</view>
-<view>注销</view>
+<view bind:tap="UserInfo">用户信息</view>
+<view bind:tap="EditAppl">写留言</view>
+<view bind:tap="ViewAppl">我的留言</view>
+<view bind:tap="AuthAppl">认证</view>
+<view bind:tap="Exit">注销</view>

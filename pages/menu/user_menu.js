@@ -56,7 +56,32 @@ Page({
   onReachBottom() {
 
   },
+  UserInfo(){
+      wx.navigateTo({
+        url: '/pages/detail/user_info?CkEE=1&CkER=1',
+      })
+  },
 
+  EditAppl(){
+    wx.navigateTo({
+      url: '/pages/edit/edit',
+    })
+  },
+  ViewAppl(){
+    wx.navigateTo({
+      url: '/pages/list/list?mode=1',
+    })
+  },
+  Exit(){
+      const APP=getApp()
+      APP.CUR_USER={}
+      wx.navigateBack({
+        delta: 0,
+        success: (res) => {},
+        fail: (res) => {},
+        complete: (res) => {},
+      })
+  },
   /**
    * 用户点击右上角分享
    */

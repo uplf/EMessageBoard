@@ -38,21 +38,8 @@
             <text wx:if="{{type_index!=0}}">管理人员口令</text>
               <input wx:if="{{type_index!=0}}" class="weui-input" name="input" placeholder="人工确认后即可开通" />
               <text>邮箱/手机</text>
-              <input class="weui-input" name="input" placeholder="不能与已有重复" />
-              <text>密码</text>
-              <input   type="safe-password"
-                        password="true"
-                        placeholder="123456"
-                        safe-password-cert-path="/安全键盘证书-20241029.cert" 
-                        safe-password-time-stamp="1618390369" 
-                        safe-password-nonce="1618390369" 
-                        safe-password-salt="zefengwang" 
-                        safe-password-custom-hash="md5(sha1('foo' + sha256(sm3(password + 'bar'))))"
-                        bind:blur="onBlur"
-                        bind:input="onInput"
-                        value="{{kkk}}"class="weui-input" name="input" placeholder="至少4位"></input>
-              <text>密码确认</text>
-              <input class="weui-input" name="input" placeholder="" />
+              <input class="weui-input" name="input" placeholder="作为联系方式保存" />
+
             </view>
           </view>
         </view>
