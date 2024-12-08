@@ -8,7 +8,7 @@
 <text class="head" bind:tap="appli_fold_change">申请人信息\n</text>
 <view wx:if="{{appli_unfold}}">
     <view class="divLine_b"></view>
-    <text>申请人账户:\t\t {{p.user_account}}</text>
+    <text>申请人账户:::\t\t {{p.user_account}}</text>
     <view class="divLine_b"></view>
     <text>是否实名:\t\t {{p.realname_info.check}}</text>
     <view wx:if="{{p.realname_info.check}}">
