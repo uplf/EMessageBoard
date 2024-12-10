@@ -65,6 +65,21 @@ Page({
   onShareAppMessage() {
 
   },
+  UserInfo(){
+    wx.navigateTo({
+        url: '/pages/detail/user_info?CkEE=1&CkER=4',
+      })
+  },
+  ViewMyAppl(){
+    wx.navigateTo({
+        url: '/pages/list/list?mode=2',
+      })
+  },
+  ViewGloAppl(){
+    wx.navigateTo({
+        url: '/pages/list/list?mode=1',
+      })
+  },
   Exit(){
     const APP=getApp()
     APP.CUR_USER={}
