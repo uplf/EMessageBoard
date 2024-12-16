@@ -67,11 +67,11 @@ page {
 .warningtext{
     color:#FF0000;
     font-size: small;
-    text-align: right;
+    text-align:center;
     align-items: flex-start;
     
 }
 
 .btn1_primary{
-    background-color:#A5DEF1
+    background-color:greenyellow
 }

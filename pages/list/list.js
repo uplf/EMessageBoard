@@ -20,8 +20,7 @@ Page({
   
       filter_edit:'false',
       cur_depar:{department_num:'0',processorNum:''},
-      cur_account:{num:'',name:''},
-      user:{id:'7676'},
+      user:{id:'',name:''},
     depart:{id:''},
     },
     AutoFilterSetup: function(){
@@ -105,8 +104,10 @@ status_Change: function(e){
      */
     onLoad(options) {
         //定义list
+    this.setData({mode:options.mode});
       var glo_data=getApp()
       this.setData({GD:glo_data.globalData})
+      this.setData({user:{...this.data.user,id:glo_data.globalData.CUR_USER.usernum}});
       var list_tmp=[]     //这里很有必要用var
       console.log(glo_data.globalData.test_data_mes)
       for(let i=0;i<glo_data.globalData.test_data_mes.length;i++)
@@ -177,10 +178,17 @@ status_Change: function(e){
       console.log(e)
     },
     formSubmit(e) {
-        console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    },
+    submit_handler(e){
+    this.setData({filter:this.data.filter_alter})
       },
-      submit_handler(e){
-        this.setData({filter:this.data.filter_alter})
-      },
-
+    rescan(){
+  },
+  inspect_handler(e){
+      const APP=getApp()
+      APP.globalData.CUR_MES=e.currentTarget.dataset.index
+    wx.navigateTo({
+      url: '/pages/detail/detail?mode=1',
+    })
+  }
   })

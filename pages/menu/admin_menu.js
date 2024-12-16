@@ -1,5 +1,6 @@
 // pages/menu/admin_menu.js
 Page({
+    GD:{},
 
   /**
    * 页面的初始数据
@@ -12,7 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var glo_data=getApp()
+    this.setData({GD:glo_data.globalData})
   },
 
   /**
@@ -62,5 +64,31 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  UserInfo(){
+    wx.navigateTo({
+        url: '/pages/detail/user_info?CkEE=1&CkER=4',
+      })
+  },
+  ViewMyAppl(){
+    wx.navigateTo({
+        url: '/pages/list/list?mode=2',
+      })
+  },
+  ViewGloAppl(){
+    wx.navigateTo({
+        url: '/pages/list/list?mode=1',
+      })
+  },
+  Exit(){
+    const APP=getApp()
+    APP.CUR_USER={}
+    wx.navigateBack({
+      delta: 0,
+      success: (res) => {},
+      fail: (res) => {},
+      complete: (res) => {},
+    })
+},
+//还有九个函数处理我就不写啦
 })

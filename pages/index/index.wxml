@@ -3,39 +3,6 @@
 
 <view style="font-size: 25px; text-align: center; font-weight: 700;">欢迎使用</view>
 
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <view class="nickname-wrapper">
-          <text class="nickname-label">账号</text>
-          <input type="nickname" class="nickname-input" placeholder="邮箱/手机号/用户编号" bind:change="onInputChange" />
-        </view>
-        <view class="nickname-wrapper">
-        <text class="password-label">开发阶段无需输入密码</text>
-    </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-      <view class="warningtext">
-      <text>\n</text>
-      <text wx:if="{{account_error}}===1" >未找到账户</text>
-      <text wx:elif="{{account_error}}===2">密码错误</text>
-      <text wx:elif="{{account_error}}===3">账户无登陆权限</text>
-      </view>
-      <text>\n\n</text>
-     <button bind:tap="handleTap_login" class="btn1_primary">登录</button>
-    </view>
-    <view class="usermotto">
-      <text bind:tap="handleTap_regA">访客登录</text>
-      <text> | </text>
-      <text bind:tap="handleTap_regB">用户注册\n</text>
-    </view>
-  </view>
-</scroll-view>
+<text>\n\n\n\n\n\n</text>
+<text class="warningtext" wx:if="{{status_login=='5'}}">该账户正在被审核，无法登录</text>
+<button bind:tap="login_appli" type="primary">登录</button>

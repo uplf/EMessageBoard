@@ -62,7 +62,7 @@
               class="input_main"
               name="input" placeholder=""> </textarea>
     <text>\n\n\n\n\n\n</text>
-    <button form-type="submit">确认</button>
+    <button form-type="submit" bind:tap="onCommit">确认</button>
     <button form-type="reset">重置</button>
     </form>
 </view>

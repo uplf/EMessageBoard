@@ -1,18 +1,25 @@
-// pages/menu/user_menu.js
+// pages/detail/user_info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    GD:{},
+    display_user:{},
+    checker:'0',//查看模式    1查看自己 2查看“被管理”者 3单纯查看 
+    checkee:'0',//被查看者身份 1用户 2管理员 3维护者
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.setData({checkee:options.CkEE});
+    this.setData({checker:options.CkER});
+    var glo_data=getApp()
+    this.setData({GD:glo_data.globalData})
+    this.setData({display_user:glo_data.globalData.user_demo})
   },
 
   /**
@@ -56,32 +63,7 @@ Page({
   onReachBottom() {
 
   },
-  UserInfo(){
-      wx.navigateTo({
-        url: '/pages/detail/user_info?CkEE=1&CkER=1',
-      })
-  },
 
-  EditAppl(){
-    wx.navigateTo({
-      url: '/pages/edit/edit',
-    })
-  },
-  ViewAppl(){
-    wx.navigateTo({
-      url: '/pages/list/list?mode=1',
-    })
-  },
-  Exit(){
-      const APP=getApp()
-      APP.CUR_USER={}
-      wx.navigateBack({
-        delta: 0,
-        success: (res) => {},
-        fail: (res) => {},
-        complete: (res) => {},
-      })
-  },
   /**
    * 用户点击右上角分享
    */

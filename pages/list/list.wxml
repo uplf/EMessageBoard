@@ -73,7 +73,8 @@
 
 
     <view>
-        <view wx:for="{{list}}" wx:key="item">
+        <view wx:for="{{list}}" wx:key="index" >
+        <view data-index="{{item}}" bind:tap="inspect_handler">
         <text>No.{{item.num}}\t\t 申请时间:{{item.mes_time}}</text>
         <view></view>
         <text wx:if="{{item.realname}}">实名</text>
@@ -85,7 +86,7 @@
         <text if="{{item.cur_solution}}">到达部门:{{GD.department_array[item.cur_solution]}}</text>
 
         <view class="divLine_b"></view>
-
+        </view>
     </view>
     </view>
 
