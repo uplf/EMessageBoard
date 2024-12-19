@@ -1,6 +1,4 @@
-<!--pages/list/list.wxml-->
-<text>pages/list/list.wxml</text>
-
+<!-- pages/list/list.wxml -->
 <view class="page-container">
     <!-- 功能栏 -->
     <view class="section">
@@ -19,63 +17,48 @@
     <!-- 筛选条件 -->
     <view class="section">
         <view bind:tap="filter_change" class="filter-toggle">
-            <view wx:if="{{unfold}}" class="filter-text">筛选条件 点击折叠</view>
+            <view wx:if="{{filter_unfold}}" class="filter-text">筛选条件 点击折叠</view>
             <view wx:else class="filter-text">筛选条件 点击展开</view>
         </view>
-        <view wx:if="{{unfold}}">
+        <view wx:if="{{filter_unfold}}">
             <view class="divLine_b"></view>
             <form catchsubmit="formSubmit" catchreset="formReset">
-                <!-- 起始时间 -->
-                <picker mode="date" bindchange="timeL_change" fields="month" value="{{filter_alter.time_timeL}}" start="2015-09-01" disabled="{{filter_changeable.time=='false'}}" class="picker">
-                    起始时间 {{filter_alter.time.timeL}}
+                <!-- 起始时间选择器 -->
+                <picker mode="date" bindchange="timeL_change" value="{{filter_alter.time.timeL}}" start="2015-09-01" disabled="{{filter_changeable.time=='false'}}" class="picker">
+                    起始时间：{{filter_alter.time.timeL || '请选择'}}
                 </picker>
                 
-                <!-- 结束时间 -->
-                <picker mode="date" bindchange="timeH_change" fields="month" value="{{filter_alter.time_timeL}}" start="2015-09-01" disabled="{{filter_changeable.time=='false'}}" class="picker">
-                    结束时间 {{filter_alter.time.timeH}}
+                <!-- 结束时间选择器 -->
+                <picker mode="date" bindchange="timeH_change" value="{{filter_alter.time.timeH}}" start="2015-09-01" disabled="{{filter_changeable.time=='false'}}" class="picker">
+                    结束时间：{{filter_alter.time.timeH || '请选择'}}
                 </picker>
 
-                <!-- 留言状态 -->
+                <!-- 留言状态选择器 -->
                 <picker bindchange="status_Change" value="{{filter_alter.status}}" range="{{GD.mes_status_array}}" disabled="{{filter_changeable.status=='false'}}" class="picker">
-                    留言状态 {{GD.mes_status_array[filter_alter.status]}}
+                    留言状态：{{GD.mes_status_array[filter_alter.status]}}
                 </picker>
 
-                <!-- 留言用户账号 -->
-                <input value="{{filter_alter.appli}}" disabled="{{filter_changeable.appli === 'false'}}" class="input-field" placeholder="筛选用户" placeholder-class="input-placeholder" />
+                <!-- 留言用户账号输入框 -->
+                <input value="{{filter_alter.appli}}" disabled="{{filter_changeable.appli === 'false'}}" class="input-field" placeholder="筛选用户账号" />
 
-                <!-- 留言编号 -->
-                <input value="{{filter_alter.num}}" disabled="{{filter_changeable.num === 'false'}}" class="input-field" placeholder="留言编号" placeholder-class="input-placeholder" />
+                <!-- 留言编号输入框 -->
+                <input value="{{filter_alter.num}}" disabled="{{filter_changeable.num === 'false'}}" class="input-field" placeholder="留言编号" />
 
-                <!-- 使用 ColorUI 的输入框组件 -->
-
-
-                <!-- 实名发布 -->
-                <checkbox checked="{{filter_alter.realname}}" disabled="{{filter_changeable.realname=='false'}}" class="checkbox">实名发布</checkbox>
-                
-                <!-- 公开发布 -->
-                <checkbox checked="{{filter_alter.public}}" disabled="{{filter_changeable.public=='false'}}" class="checkbox">公开发布</checkbox>
-                
-                <!-- 可作为提案 -->
-                <checkbox checked="{{filter_alter.reuse}}" disabled="{{filter_changeable.reuse=='false'}}" class="checkbox">可被作为提案</checkbox>
-                
-                <!-- 已发布 -->
-                <checkbox checked="{{filter_alter.issue}}" disabled="{{filter_changeable.issue=='false'}}" class="checkbox">已发布</checkbox>
-
-                <!-- 经过部门 -->
-                <picker bindchange="departChange" value="{{filter_alter.depart_status.department}}" range="{{GD.department_array}}" disabled="{{filter_changeable.depart_status.department=='false'}}" class="picker">
-                    经过部门 {{GD.department_array[filter_alter.department_status.department]}}
+                <!-- 经过部门选择器 -->
+                <picker bindchange="departChange" value="{{filter_alter.department_status.department}}" range="{{GD.department_array}}" disabled="{{filter_changeable.depart_status.department=='false'}}" class="picker">
+                    经过部门：{{GD.department_array[filter_alter.department_status.department]}}
                 </picker>
 
-                <!-- 该部门的处理状态 -->
-                <picker bindchange="depart_status_Change" value="{{filter_alter.depart_status.depart_status}}" range="{{GD.unit_status_array}}" disabled="{{filter_changeable.depart_status.depart_status=='false'}}" class="picker">
-                    该部门的处理状态 {{GD.unit_status_array[filter_alter.department_status.depart_status]}}
+                <!-- 该部门的处理状态选择器 -->
+                <picker bindchange="depart_status_Change" value="{{filter_alter.department_status.depart_status}}" range="{{GD.unit_status_array}}" disabled="{{filter_changeable.depart_status.depart_status=='false'}}" class="picker">
+                    该部门的处理状态：{{GD.unit_status_array[filter_alter.department_status.depart_status]}}
                 </picker>
 
                 <!-- 提交按钮 -->
                 <button bind:tap="submit_handler" formType="submit" class="submit-btn">提交</button>
                 
                 <!-- 重置按钮 -->
-                <button bind:tap="AutoFilterSetup" class="reset-btn">重置</button>
+                <button bind:tap="resetFilters" class="reset-btn">重置</button>
             </form>
         </view>
     </view>
@@ -85,19 +68,15 @@
 
     <!-- 列表项 -->
     <view class="section">
-        <view wx:for="{{list}}" wx:key="index">
-            <view data-index="{{item}}" bind:tap="inspect_handler" class="item-container">
-                <text class="item-text">No.{{item.num}} 申请时间:{{item.mes_time}}</text>
-                <view class="item-status">
-                    <text wx:if="{{item.realname}}" class="realname-text">实名</text>
-                    <text class="theme-text">{{item.theme}}</text>
-                    <text class="progress-text">总体进度: {{GD.mes_status_array[item.mes_status]}}</text>
-                    <text wx:if="{{item.cur_solution}}" class="solution-text">到达部门: {{GD.department_array[item.cur_solution]}}</text>
-                </view>
-                <view class="divLine_b"></view>
+        <view wx:for="{{list}}" wx:key="index" data-index="{{item}}" bind:tap="inspect_handler" class="item-container">
+            <text class="item-text">No.{{item.num}} 申请时间:{{item.mes_time}}</text>
+            <view class="item-status">
+                <text wx:if="{{item.realname}}" class="realname-text">实名</text>
+                <text class="theme-text">{{item.theme}}</text>
+                <text class="progress-text">总体进度: {{GD.mes_status_array[item.mes_status]}}</text>
+                <text wx:if="{{item.cur_solution}}" class="solution-text">到达部门: {{GD.department_array[item.cur_solution]}}</text>
             </view>
+            <view class="divLine_b"></view>
         </view>
     </view>
 </view>
-
-

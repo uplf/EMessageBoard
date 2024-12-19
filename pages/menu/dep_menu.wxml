@@ -1,0 +1,61 @@
+<!--pages/menu/dep_menu.wxml-->
+<text>pages/menu/dep_menu.wxml</text>
+<view class="container">
+    <text class="title">部门用户菜单</text>
+
+    <!-- 待处理留言入口 -->
+    <view class="menu-item" bindtap="showPendingMessages">
+        <text>待处理留言</text>
+    </view>
+
+    <!-- 查看评价入口 -->
+    <view class="menu-item" bindtap="showReviews">
+        <text>查看评价</text>
+    </view>
+
+    <!-- 历史处理入口 -->
+    <view class="menu-item" bindtap="showHistory">
+        <text>历史处理</text>
+    </view>
+
+    <!-- 留言内容区域 -->
+    <view class="message-section">
+        <text>留言内容:</text>
+        <textarea class="message-input" placeholder="请输入留言内容"></textarea>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="submit-button" bindtap="submitMessage">提交留言</button>
+
+    <!-- 待处理留言列表 -->
+    <view class="pending-messages">
+        <block wx:for="{{pendingMessages}}" wx:key="message">
+            <view class="message-item">
+                <text>{{item.department}}</text>
+                <text>留言: {{item.message}}</text>
+            </view>
+        </block>
+    </view>
+
+    <!-- 评价列表 -->
+    <view class="reviews-section">
+        <text>评价列表:</text>
+        <block wx:for="{{reviews}}" wx:key="review">
+            <view class="review-item">
+                <text>评价: {{item.rate}}</text>
+                <text>内容: {{item.comment}}</text>
+            </view>
+        </block>
+    </view>
+
+    <!-- 历史处理列表 -->
+    <view class="history-section">
+        <text>历史处理:</text>
+        <block wx:for="{{history}}" wx:key="historyItem">
+            <view class="history-item">
+                <text>时间: {{item.date}}</text>
+                <text>处理: {{item.action}}</text>
+            </view>
+        </block>
+    </view>
+</view>
