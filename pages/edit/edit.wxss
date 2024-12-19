@@ -8,8 +8,174 @@
     white-space: wrap;
 }
 .check_window{
-    border-style: solid;
-    height:200px;
-    width:350px;
-    border-color: darkblue;
+    width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+  height: 200px;
 }
+.check_window1{
+  width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 14px;
+background-color: #fff;
+height: 150px;
+}
+
+
+/* 设置输入框的基本样式 */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+  height: 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* 当输入框禁用时改变背景色 */
+.input-field:disabled {
+  background-color: #f0f0f0;  /* 灰色背景，提醒用户不可编辑 */
+  color: #aaa;  /* 灰色文字 */
+  border: 1px solid #ddd;  /* 变淡的边框 */
+}
+
+/* 提示文字（placeholder）的样式 */
+.input-placeholder {
+  color: #999; /* 灰色提示文字 */
+  font-size: 13px;
+  text-align: center; /* 居中对齐提示文字 */
+  line-height: 40px;  /* 垂直居中对齐提示文字 */
+}
+
+
+/* 页面容器 */
+.page-container {
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+/* 功能栏 */
+.section {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.title-text {
+  font-size: 16px;
+  color: #333;
+}
+
+/* 筛选条件 */
+.filter-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #007aff;
+  cursor: pointer;
+}
+
+.filter-text {
+  font-size: 14px;
+  color: #007aff;
+}
+
+.picker {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  background-color: #fff;
+  line-height: 40px;
+}
+
+.checkbox {
+  margin-top: 10px;
+}
+
+.submit-btn, .reset-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #007aff;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-btn:hover, .reset-btn:hover {
+  background-color: #005bb5;
+}
+
+/* 列表项 */
+.item-container {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.item-text {
+  font-size: 14px;
+  color: #333;
+}
+
+.item-status {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.theme-text {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #999;
+}
+
+.solution-text {
+  font-size: 14px;
+  color: #007aff;
+}
+
+.divLine, .divLine_b {
+  height: 1px;
+  background-color: #e6e6e6;
+  margin: 10px 0;
+}
+
+.input-field:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+}
+
+
+

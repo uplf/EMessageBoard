@@ -21,6 +21,8 @@ onLoad(){
         const app=getApp()
         app.globalData.CUR_USER=app.globalData.user_demo;
         this.setData({status_login:status})
+        status='1'
+        // 普通登录器
         switch (status)
         {
             case '0':

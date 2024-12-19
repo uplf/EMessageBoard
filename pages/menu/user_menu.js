@@ -73,6 +73,7 @@ Page({
     })
   },
   Exit(){
+    console.log("exitttttt")
       const APP=getApp()
       APP.CUR_USER={}
       wx.navigateBack({

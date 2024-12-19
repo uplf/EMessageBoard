@@ -1,9 +1,33 @@
 <!--pages/menu/user_menu.wxml-->
 <text>pages/menu/user_menu.wxml</text>
+<view class="divider"></view>
+<text>\n\n\n\n\n\n</text>
 
-<text>欢迎使用\n\n</text>
-<view bind:tap="UserInfo">用户信息</view>
-<view bind:tap="EditAppl">写留言</view>
-<view bind:tap="ViewAppl">我的留言</view>
-<view bind:tap="AuthAppl">认证</view>
-<view bind:tap="Exit">注销</view>
+<view class="section-title">
+        <view class="text-center padding">欢迎使用</view>        
+</view>
+
+<view class="padding">
+  <view class="cu-list menu">
+    <view class="cu-item" bindtap="UserInfo">
+      <view class="content">用户信息</view>
+    </view>
+    <view class="cu-item" bindtap="EditAppl">
+      <view class="content">写留言</view>
+    </view>
+    <view class="cu-item" bindtap="ViewAppl">
+      <view class="content">我的留言</view>
+    </view>
+  </view>
+</view>
+
+<view class="padding">
+  <view class="cu-list menu">
+    <view class="cu-item" bindtap="AuthAppl">
+      <view class="content">认证</view>
+    </view>
+    <view class="cu-item" bindtap="Exit">
+      <view class="content">注销</view>
+    </view>
+  </view>
+</view>

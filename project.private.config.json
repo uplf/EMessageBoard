@@ -3,5 +3,18 @@
   "projectname": "JS_MP",
   "setting": {
     "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/edit/edit",
+          "pathName": "pages/menu/user_menu",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

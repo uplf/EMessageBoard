@@ -1,6 +1,7 @@
 <!--index.wxml-->
 
-
+<text>\n\n\n\n\n\n</text>
+<text>\n\n\n\n\n\n</text>
 <view style="font-size: 25px; text-align: center; font-weight: 700;">欢迎使用</view>
 
 <text>\n\n\n\n\n\n</text>
