@@ -8,23 +8,23 @@
     <view class="section">
       <picker bindchange="bindTypePickerChange" value="{{type_index}}}" range="{{GD.type_array}}">
         <view class="picker">
-         账户类型: {{GD.type_array[type_index]}}
+         账户类型: {{GD.type_array[reg_info.usertype]}}
        </view>
       </picker>
     </view>
 
     <view class="section">
-    <view hidden="{{type_index!=0}}">
+    <view hidden="{{reg_info.usertype!='0'}}">
       <picker  bindchange="bindSchoolPickerChange" value="{{school_index}}}" range="{{GD.school_array}}">
         <view class="picker">
-         学院: {{GD.school_array[school_index]}}
+         学院: {{GD.school_array[reg_info.userschool]}}
        </view>
       </picker>
     </view>
-    <view hidden="{{type_index!=2}}">
+    <view hidden="{{reg_info.usertype!='2'}}">
       <picker bindchange="bindDepartmentPickerChange" value="{{department_index}}}" range="{{GD.department_array}}">
         <view class="picker">
-         部门 {{GD.department_array[department_index]}} {{department_index}}
+         部门 {{GD.department_array[reg_info.userdepartment]}} {{department_index}}
        </view>
       </picker>
     </view>
@@ -35,10 +35,15 @@
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
             <view class="weui-cell__bd" style="margin: 30rpx 0" >
-            <text wx:if="{{type_index!=0}}">管理人员口令</text>
-              <input wx:if="{{type_index!=0}}" class="weui-input" name="input" placeholder="人工确认后即可开通" />
+                <view class="section-title">昵称</view> 
+              <input class="weui-input" bindchange="name_change" name="input" />
+            
+            <view wx:if="{{reg_info.usertype!='0'}}">
+              <text >管理人员口令</text>
+              <input class="weui-input" 	bindchange="password_change" name="input" placeholder="人工确认后即可开通" />
+            </view>
               <view class="section-title">邮箱/手机:</view> 
-              <input class="weui-input" name="input" placeholder="作为联系方式保存" />
+              <input class="weui-input" bindchange="contract_change" name="input" placeholder="作为联系方式保存" />
 
             </view>
           </view>
@@ -47,12 +52,9 @@
 
 
       <view class="btn-area">
-        <button wx:if="{{errorflag==1}}" style="margin: 30rpx 0" type="default" disabled="true" formType="submit">账号已注册</button>
-        <button wx:elif="{{errorflag==2}}" style="margin: 30rpx 0" type="warn" disabled="true" formType="submit">密码不合法</button>
-        <button wx:elif="{{errorflag==3}}" style="margin: 30rpx 0" type="warn" disabled="true" formType="submit">密码不一致</button>
-        <button wx:elif="{{errorflag==4}}" style="margin: 30rpx 0" type="primary" disabled="true" formType="submit">已提交，待审核</button>
+        <button wx:if="{{errorflag==1}}" style="margin: 30rpx 0" type="warn" disabled="true" formType="submit">请检查/等待</button>
         <button wx:else bind:tap="bindComfirmForm" style="margin: 30rpx 0" formType="submit">提交</button>
-        <button bind:tap="trial" style="margin: 30rpx 0" formType="reset">Reset</button>
+        <button bind:tap="bindResetForm" style="margin: 30rpx 0" formType="reset">重置</button>
       </view>
     </form>
   </view>

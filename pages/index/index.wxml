@@ -5,5 +5,5 @@
 <view style="font-size: 25px; text-align: center; font-weight: 700;">欢迎使用</view>
 
 <text>\n\n\n\n\n\n</text>
-<text class="warningtext" wx:if="{{status_login=='5'}}">该账户正在被审核，无法登录</text>
+<text class="warningtext" wx:if="{{app.globalData.LOGIN_STATUS=='5'}}">该账户正在被审核，无法登录</text>
 <button bind:tap="login_appli" type="primary">登录</button>

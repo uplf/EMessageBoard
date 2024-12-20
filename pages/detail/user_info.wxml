@@ -9,7 +9,7 @@
    <view class="user-info">
      <view class="user-header">
       <text class="user-account">{{display_user.user_account}}</text>
-      <text class="status {{display_user.avail == 'true' ? 'status-normal' : 'status-disabled'}}"> {{display_user.avail == 'true' ? '正常' : '停用'}}</text>
+      <text class="status {{display_user.avail == '1' ? 'status-normal' : 'status-disabled'}}"> {{display_user.avail == '1' ? '正常' : '停用'}}</text>
     </view>
 
     <view class="divider"></view>

@@ -102,7 +102,7 @@ Page({
   onLoad(options) {
     this.setData({ mode: options.mode });
     var glo_data = getApp();
-    this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.usernum } });
+    this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
     var list_tmp = [];
     for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
       list_tmp.push(glo_data.globalData.test_data_mes[i]);
@@ -176,11 +176,11 @@ Page({
       const startTime = filter_alter.time.timeL ? new Date(filter_alter.time.timeL) : null;
       const endTime = filter_alter.time.timeH ? new Date(filter_alter.time.timeH) : null;
       const itemTime = new Date(item.mes_time);
-      const isStatusMatch = !filter_alter.status || item.mes_status === filter_alter.status;
-      const isNumMatch = !filter_alter.num || item.num === filter_alter.num;
-      const isAppliMatch = !filter_alter.appli || item.user_account === filter_alter.appli;
-      const isDepartmentMatch = !filter_alter.department_status.department || item.department === filter_alter.department_status.department;
-      const isDepartStatusMatch = !filter_alter.department_status.depart_status || item.depart_status === filter_alter.department_status.depart_status;
+      const isStatusMatch = !filter_alter.status || item.mes_status == filter_alter.status;
+      const isNumMatch = !filter_alter.num || item.num == filter_alter.num;
+      const isAppliMatch = !filter_alter.appli || item.user_account == filter_alter.appli;
+      const isDepartmentMatch = !filter_alter.department_status.department || item.department == filter_alter.department_status.department;
+      const isDepartStatusMatch = !filter_alter.department_status.depart_status || item.depart_status == filter_alter.department_status.depart_status;
 
       return (!startTime || itemTime >= startTime) && (!endTime || itemTime <= endTime) && isStatusMatch && isNumMatch && isAppliMatch && isDepartmentMatch && isDepartStatusMatch;
     });
@@ -203,6 +203,7 @@ Page({
       }
     });
     // 重新加载列表数据
+    this.AutoFilterSetup();
     this.applyFilters(); // 如果您有applyFilters方法来根据条件过滤数据
   },
   submit_handler: function (e) {

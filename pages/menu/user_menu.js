@@ -57,6 +57,8 @@ Page({
 
   },
   UserInfo(){
+      var app0=getApp()
+    app0.globalData.user_demo=app0.globalData.CUR_USER
       wx.navigateTo({
         url: '/pages/detail/user_info?CkEE=1&CkER=1',
       })
