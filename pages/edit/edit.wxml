@@ -36,15 +36,15 @@
     <view class="section-title">留言选项</view>
     
     <view class="label">
-    <checkbox-group>
+    <checkbox-group bindchange="checkbox_change">
         <label>
-            <checkbox  value="实名（使用本人认证的邮箱提交）"  checked="{{mes_data.realname.check}}">
+            <checkbox bind:tap="realname_change" value="1" checked="{{mes_data.realname.check}}">
             实名 
             </checkbox>            
-            <checkbox  value="实名（使用本人认证的邮箱提交）"  checked="{{mes_data.reuse}}">
+            <checkbox bindchange="reuse_change" value="2">
             允许用作学代会建议
             </checkbox>
-            <checkbox  checked="{{mes_data.public}}">
+            <checkbox bindchange="public_change" value="3">
             公开
             </checkbox>
             
@@ -55,11 +55,13 @@
     <text>\n\n</text>
     <view class="section-title">留言内容</view>
     <view class="input-field">
-              <input class="weui-input" name="input" placeholder="输入主题" />
+              <input class="weui-input" name="input" placeholder="输入主题" bindchange="theme_change"/>
     </view>
     
     <view class="text-xl">正文:</view>   
-              <textarea 	adjust-position='true'
+              <textarea 
+              bindblur="description_change"
+              	adjust-position='true' 
               maxlength='1000'
               type="text"
               class="check_window"

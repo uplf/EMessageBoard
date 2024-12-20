@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    
     "pages/index/index",
     "pages/menu/user_menu",
     "pages/menu/admin_menu",

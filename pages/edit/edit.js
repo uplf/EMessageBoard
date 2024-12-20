@@ -5,24 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-      
+      //num 000000-999999
       mes_data:{
-      user_account:'',
-      realname_info:{check:'true', email:""},
-      contract:'',
+      user_account:'',//user_account
+      realname_info:{check:'true', email:""},//realname_info
+      contract:'',//contract **点击确定之后，从CUR_USER中渠道对应信息
 
-      theme:'',
-      description:"",
-      file_index:[],
+      theme:'',//theme **bindchange时记录并写入
+      description:"",//discription  **bindchange时记录并写入
+      file_index:[],//#
 
       solution:[],
-      public:'false',
-      reuse:'true',
-      communicate:[],
+      public:'0',//y**bindchange时记录并写入
+      reuse:'0',//y**bindchange时记录并写入
+      communicate:[],//y##**bindchange时记录并写入
 
 
-      mes_status:'',
-      mes_time:'',
+      mes_status:'',//**点击确认之后直接确定为“正在处理状态”
+      mes_time:'',//** 点击确认之后直接确定*/
       mes_finish_time:'',
       },
       mescate_index:'',
@@ -77,9 +77,24 @@ Page({
         this.data.mes_data,solution:solu_tmp}})
   },
 
-
+  checkbox_change:function(e){
+      if(e.detail.value.includes("1"))
+      if(e.detail.value.includes("1"))console.log("gogogog")
+      this.setData({'mes_data.realname_info.check':(e.detail.value.includes("1")?'1':'0')})
+      this.setData({'mes_data.reuse':(e.detail.value.includes("2")?'0':'1')})
+      this.setData({'mes_data.public':(e.detail.value.includes("3")?'1':'0')})
+  },
+  theme_change:function(e){
+      console.log(e)
+      this.setData({'mes_data.theme':e.detail.value})
+  },
+  description_change:function(e){
+    this.setData({'mes_data.description':e.detail.value})
+},
 
   /**
+   *                     'mes_data.reuse':(e.detail.value.includes("2")?'1':'0'),
+                    'mes_data.public':(e.detail.value.includes("3")?'1':'0')}
    * 生命周期函数--监听页面加载
    */
 
@@ -87,6 +102,7 @@ Page({
 
   onLoad(options) {
     var glo_data=getApp()
+    //glo_data.globalData.CUR_USER=glo_data.globalData.user_demo
     this.setData({GD:glo_data.globalData})
     var tmp_list=glo_data.test_data_mes
     this.setData({list,tmp_list})
@@ -133,9 +149,19 @@ Page({
   onReachBottom() {
 
   },
-  onCommit(){
+  onCommit(e){
+
+    var mes_define=this.data.mes_data
+    const appData=getApp()
+    mes_define.user_account=appData.globalData.CUR_USER.num
+    if(mes_define.realname_info.check=='1')mes_define.realname_info.email=appData.globalData.CUR_USER.realname_info.email
+    mes_define.contract=appData.globalData.CUR_USER.contract
+    mes_define.mes_status='1'
+    mes_define.mes_time=Date()
+    //CUR_USER.num=account
+    this.setData({mes_data:mes_define})
     //###handle
-    wx.navigateBack();
+    //wx.navigateBack();
   },
   /**
    * 用户点击右上角分享

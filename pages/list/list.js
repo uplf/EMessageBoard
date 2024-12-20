@@ -6,6 +6,7 @@ Page({
   data: {
     GD: {},
     list: ['null'],
+    list_unfitered:['null'],
     list_unit: { num: '', appli: "", time: '', theme: '', realname: '', status: '', cur: '' },
     filter: {
       time: { timeL: '', timeH: '' },
@@ -81,6 +82,8 @@ Page({
     var timeScope = this.data.filter_alter.time;
     timeScope.timeL = e.detail.value;
     this.setData({ 'filter_alter.time': timeScope });
+    if(this.data.filter_alter.time.timeL>this.data.filter_alter.time.timeH)console.log("satisfied")
+    else console.log("failed")
   },
   departChange: function (e) {
     var depart_status = this.data.filter_alter.department_status;
@@ -109,6 +112,7 @@ Page({
     }
     this.setData({ list: list_tmp });
     this.AutoFilterSetup();
+    
   },
 
   /**
@@ -172,7 +176,7 @@ Page({
   applyFilters: function () {
     const { filter_alter } = this.data;
     const glo_data = getApp().globalData;
-    let list_tmp = glo_data.test_data_mes.filter(item => {
+    let list_tmp = glo_data.test_data_mes.filter_a(item => {
       const startTime = filter_alter.time.timeL ? new Date(filter_alter.time.timeL) : null;
       const endTime = filter_alter.time.timeH ? new Date(filter_alter.time.timeH) : null;
       const itemTime = new Date(item.mes_time);
@@ -184,8 +188,9 @@ Page({
 
       return (!startTime || itemTime >= startTime) && (!endTime || itemTime <= endTime) && isStatusMatch && isNumMatch && isAppliMatch && isDepartmentMatch && isDepartStatusMatch;
     });
-
     this.setData({ list: list_tmp });
+    //1.拿到筛选条件，重置list
+    //2.遍历list_unfitered,每项对比中分别对比filter的条件，如果满足就放到list里面
   },
   // 新增：重置筛选条件的方法
   resetFilters: function() {
