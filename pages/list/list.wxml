@@ -58,7 +58,7 @@
                 <button bind:tap="submit_handler" formType="submit" class="submit-btn">提交</button>
                 
                 <!-- 重置按钮 -->
-                <button bind:tap="resetFilters" class="reset-btn">重置</button>
+                <button bind:tap="resetFilters" form-type="reset" class="reset-btn">重置</button>
             </form>
         </view>
     </view>
@@ -74,7 +74,7 @@
                 <text wx:if="{{item.realname}}" class="realname-text">实名</text>
                 <text class="theme-text">{{item.theme}}</text>
                 <text class="progress-text">总体进度: {{GD.mes_status_array[item.mes_status]}}</text>
-                <text wx:if="{{item.cur_solution}}" class="solution-text">到达部门: {{GD.department_array[item.cur_solution]}}</text>
+                <text wx:if="{{item.cur_solution}}" class="solution-text">到达部门: {{GD.department_array[item.cur_solution.department]}}</text>
             </view>
             <view class="divLine_b"></view>
         </view>

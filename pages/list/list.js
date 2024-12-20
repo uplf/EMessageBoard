@@ -6,7 +6,7 @@ Page({
   data: {
     GD: {},
     list: ['null'],
-    list_unfitered:['null'],
+    list_unfiltered:['null'],
     list_unit: { num: '', appli: "", time: '', theme: '', realname: '', status: '', cur: '' },
     filter: {
       time: { timeL: '', timeH: '' },
@@ -38,7 +38,10 @@ Page({
     user: { id: '', name: '' },
     depart: { id: '' },
   },
-
+  BtV:function(BL){
+    if(BL=='false'||BL==false||BL=='0')return '0'
+    if(BL=='true'||BL==true||BL=='1')return '1'
+  },
   AutoFilterSetup: function () {
     const mode = this.data.mode;
     var filter_assign = this.data.filter;
@@ -110,6 +113,7 @@ Page({
     for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
       list_tmp.push(glo_data.globalData.test_data_mes[i]);
     }
+    this.setData({ list_unfiltered: list_tmp });
     this.setData({ list: list_tmp });
     this.AutoFilterSetup();
     
@@ -174,23 +178,30 @@ Page({
   },
   // 新增：根据筛选条件获取数据
   applyFilters: function () {
-    const { filter_alter } = this.data;
-    const glo_data = getApp().globalData;
-    let list_tmp = glo_data.test_data_mes.filter_a(item => {
-      const startTime = filter_alter.time.timeL ? new Date(filter_alter.time.timeL) : null;
-      const endTime = filter_alter.time.timeH ? new Date(filter_alter.time.timeH) : null;
-      const itemTime = new Date(item.mes_time);
-      const isStatusMatch = !filter_alter.status || item.mes_status == filter_alter.status;
-      const isNumMatch = !filter_alter.num || item.num == filter_alter.num;
-      const isAppliMatch = !filter_alter.appli || item.user_account == filter_alter.appli;
-      const isDepartmentMatch = !filter_alter.department_status.department || item.department == filter_alter.department_status.department;
-      const isDepartStatusMatch = !filter_alter.department_status.depart_status || item.depart_status == filter_alter.department_status.depart_status;
+      var FA=this.data.filter_alter
+      var list=this.data.list_unfiltered
+      var list_applied=[]
+      var x=Object()
+      var flag='1'
+      for(var xx in list)
+      {
 
-      return (!startTime || itemTime >= startTime) && (!endTime || itemTime <= endTime) && isStatusMatch && isNumMatch && isAppliMatch && isDepartmentMatch && isDepartStatusMatch;
-    });
-    this.setData({ list: list_tmp });
+         x=list[xx]
+         if(FA.time.timeH&&FA.time.timeH<x.mes_time)continue
+         if(FA.time.timeL&&FA.time.timeL>x.mes_time)continue
+         if(FA.status&&FA.status!=x.mes_status)continue
+         if(FA.appli&&(FA.appli!=x.usernum))continue
+         if(FA.num&&FA.num!=x.num)continue
+         if(FA.department_status.department&&FA.department_status.department!=x.cur_solution.department)continue
+         if(FA.department_status.depart_status&&FA.department_status.depart_status!=x.solution.status)
+         if(FA.public&&FA.public!=x.public)continue
+         if(FA.reuse&&FA.reuse!=x.reuse)continue
+          list_applied.push(x)
+      }
+      console.list_applied
+      this.setData({list:list_applied})
     //1.拿到筛选条件，重置list
-    //2.遍历list_unfitered,每项对比中分别对比filter的条件，如果满足就放到list里面
+    //2.遍历list_unfiltered,每项对比中分别对比filter的条件，如果满足就放到list里面
   },
   // 新增：重置筛选条件的方法
   resetFilters: function() {

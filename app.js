@@ -44,7 +44,7 @@ App({
     user_demo:{
       user_type:'3',
       num:'100812',
-      usernum:'wx_101391',
+      usernum:'101391',
       user_account:"accountname",
       realname_info:{check:'false', email:"123@.edu.cn"},
       contract:"121317456@qq.com",
@@ -55,7 +55,7 @@ App({
     test_data_mes:[
       {
         num:'100792',
-        usernum:'wx_103291',
+        usernum:'103291',
         user_account:"accountname",
         realname_info:{check:'true', email:"123456789@mail.scut.edu.cn"},
         contract:"192837456@qq.com",
@@ -71,15 +71,15 @@ App({
         communicate:[{senderdep:'0',sendername:"处理员1",info:"这里是处理员1的话",user_read:'true',attachment:[],time:"2024-5-8-21:00"},
           {senderdep:'-1',sendername:"accountname",info:"这里是申请者的话",user_read:'true',attachment:[],time:"2024-5-9-6:00"},
           {senderdep:"0",sendername:"处理员2",info:"我是处理员2",user_read:'false',attachment:[],time:"2024-5-9-7:20"}],
-        cur_solution:'2',
+        cur_solution:  {cate_unit:'1',department:'2',rate:'0',status:'2',display:"",finish_time:""},
 
         mes_status:'1',
         mes_time:'2024-5-8-12:00',
         mes_finish_time:'',
       },
       {
-        num:'100812',
-        usernum:'wx_101391',
+        num:'100282',
+        usernum:'100812',
         user_account:"accountname",
         realname_info:{check:'true', email:"12212"},
         contract:"121317456@qq.com",
@@ -94,7 +94,7 @@ App({
         communicate:[{senderdep:'0',sendername:"处理员1",info:"这里是处理员1的话",user_read:'true',attachment:[],time:"2024-5-8-21:00"},
           {senderdep:'-1',sendername:"accountname",info:"这里是申请者的话",user_read:'true',attachment:[],time:"2024-5-9-6:00"},
           {senderdep:"0",sendername:"处理员2",info:"我是处理员2",user_read:'false',attachment:[],time:"2024-5-9-7:20"}],
-        cur_solution:'2',
+        cur_solution:{cate_unit:'1',department:'2',rate:'0',status:'2',display:"",finish_time:""},
 
         mes_status:'2',
         mes_time:'2024-5-8-12:00',
@@ -102,7 +102,7 @@ App({
       },
       {
         num: '100913',
-        usernum: 'wx_101392',
+        usernum: '101392',
         user_account: "newaccount456",
         realname_info: { check: 'true', email: "newuser456@mail.scut.edu.cn" },
         contract: "newuser456@qq.com",
@@ -120,7 +120,7 @@ App({
           { senderdep: '-1', sendername: "newaccount456", info: "这里是新申请者的话3", user_read: 'true', attachment: [], time: "2024-12-22-9:00" },
           { senderdep: "3", sendername: "处理员4", info: "我是处理员4", user_read: 'false', attachment: [], time: "2024-12-22-11:30" }
         ],
-        cur_solution: '1',
+        cur_solution: { cate_unit: '1', department: '3', rate: '0', status: '3', display: "已指定下一步：学校办公室", finish_time: "2024-12-23-16:00" },
         mes_status: '1',
         mes_time: '2024-12-21-08:00',
         mes_finish_time: '',

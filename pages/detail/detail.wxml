@@ -333,7 +333,7 @@
 </view>
 </view>
 
-<view wx:if="{{mode=='3'&&p.mes_status=='2'}}">
+<view wx:if="{{mode=='3'&&p.mes_status=='3'}}">
     <button>进入交流页面</button>
     <form>处理
 <view class="divLine"></view>

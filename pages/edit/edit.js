@@ -160,6 +160,9 @@ Page({
     mes_define.mes_time=Date()
     //CUR_USER.num=account
     this.setData({mes_data:mes_define})
+    mes_define.solution[0].status='2'
+    mes_define.cur_solution=mes_define.solution[0]
+    console.log(mes_define)
     //###handle
     //wx.navigateBack();
   },
