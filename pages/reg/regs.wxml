@@ -8,7 +8,7 @@
     <view class="section">
       <picker bindchange="bindTypePickerChange" value="{{type_index}}}" range="{{GD.type_array}}">
         <view class="picker">
-         账户类型 {{GD.type_array[type_index]}}
+         账户类型: {{GD.type_array[type_index]}}
        </view>
       </picker>
     </view>
@@ -17,7 +17,7 @@
     <view hidden="{{type_index!=0}}">
       <picker  bindchange="bindSchoolPickerChange" value="{{school_index}}}" range="{{GD.school_array}}">
         <view class="picker">
-         学院 {{GD.school_array[school_index]}}
+         学院: {{GD.school_array[school_index]}}
        </view>
       </picker>
     </view>
@@ -37,7 +37,7 @@
             <view class="weui-cell__bd" style="margin: 30rpx 0" >
             <text wx:if="{{type_index!=0}}">管理人员口令</text>
               <input wx:if="{{type_index!=0}}" class="weui-input" name="input" placeholder="人工确认后即可开通" />
-              <text>邮箱/手机</text>
+              <view class="section-title">邮箱/手机:</view> 
               <input class="weui-input" name="input" placeholder="作为联系方式保存" />
 
             </view>

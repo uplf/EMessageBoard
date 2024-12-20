@@ -4,8 +4,9 @@
 <view class="page-container">
     <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
       <view class="divLine"></view>
+      <text>\n\n</text>
       <view class="section-title">
-        <view class="text-center padding">流程确定</view>        
+        <view class="section-title">流程确定</view>        
       </view>
     <view>
     <view class="section">
