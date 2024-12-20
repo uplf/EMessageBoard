@@ -13,15 +13,20 @@ onLoad(){
 
   login_appli(e) {
       var status='1'       //0失败 1用户登录 2管理员登录 3维护员登录 4注册 5拒绝登录
-      //获取unionid
-      status='0'
-      //查找用户库
       
-        status='3'
+      //##获取unionid
+      var unionid='12421sdf12'//temp
+      //##查找用户库
+      //###return suc->flag(1/2/3)user_info fail->flag(0) notfound->(4)
+      status='3'
+      
+      if(status=='1'||status=='2'||status=='3')
+      {
         const app=getApp()
         app.globalData.CUR_USER=app.globalData.user_demo;
         this.setData({status_login:status})
-        status='1'
+      }
+
         // 普通登录器
         switch (status)
         {
@@ -30,7 +35,7 @@ onLoad(){
             case '2':
             case '3': 
                 this.Navigate_Admin();
-                break
+                break;
             case '1': 
                 this.Navigate_User();
                 break;

@@ -24,10 +24,11 @@
 
 
     <view class="check_window1">预览
-        <view wx:for="{{mes_data.solution}}" wx:key="item">
-        <text>{{item.department}} </text>
-            <text>{{GD.department_array[item.department]}}->{{GD.proc_unit_expl[item.cate_unit-1]}}</text>
-            <text></text>
+        <view class="divLine"></view>
+        <view wx:for="{{mes_data.solution}}" wx:key="item">            
+        <view class="text-left"><text>{{GD.department_array[item.department]}}</text></view>        
+        <view class="text-right"><text>{{GD.proc_unit_expl[item.cate_unit-1]}}</text></view> 
+            <view class="divLine"></view>
         </view>
     </view>
     </view>
