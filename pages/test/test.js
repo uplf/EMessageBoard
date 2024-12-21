@@ -22,7 +22,7 @@ Page({
         list:"MessageList",
         data:{
           theme:"这里是问题的主题",
-          description:"这里是问题的正文",
+          description:"正文",
 
           solution:[{cate_unit:'0',department:'0',rate:'0',status:'3',
                       display:"已指定下一步：后勤处",finish_time:"2024-5-9-18:00"},
@@ -51,6 +51,7 @@ Page({
       }
     }).then(res => {
       //在这里操作返回值res
+      console.log(res.result)
       this.setData({
         addData:res
       })

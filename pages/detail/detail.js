@@ -14,6 +14,8 @@ Page({
       outcome_array:[{name:'完成处理',ind:'done'},{name:'完成指定',ind:'assigned'},{name:'要求补充材料/补充说明',ind:'req'},
                             {name:'处理搁置',ind:'pause'},{name:'处理失败',ind:'failed'}],
         mes_array:['留言','留言','补充内容','搁置原因','失败原因'],
+    proc_outp_link:['3','3','5','2','6'],
+    process:{},
     p:{
         num:'',
         user_account:"",
@@ -33,6 +35,7 @@ Page({
         mes_status:'1',
         mes_time:'',
         mes_finish_time:'',
+        cur_solution:''
         },
         mescate_index:'',
         department_index:'',
@@ -47,7 +50,7 @@ Page({
       
     var glo_data=getApp()
     this.setData({GD:glo_data.globalData})
-    this.setData({p:glo_data.globalData.CUR_MES})
+    this.setData({p:glo_data.globalData.CUR_MES,process:glo_data.globalData.CUR_MES.cur_solution})
     this.setData({mode:e.mode})
     glo_data.globalData.CUR_MES=''
   },
@@ -127,6 +130,25 @@ Page({
     var tmp0=this.data.outcome_tmp
     tmp0.attach.type=e.detail.value
     this.setData({outcome_tmp:tmp0})
+  },
+  info_change(e){
+    this.setData({'outcome_tmp.info':e.detail.value})
+  },
+  CommitProc(e){
+    var mes=this.data.p
+    var proc=this.data.process
+    var proc1=this.data.outcome_tmp
+    proc.status=this.data.proc_outp_link[proc1.ind]
+    proc.display=proc1.info
+    if(proc1.ind=='1'){
+        var next_proc={
+            cate_unit:proc1.attach.type,
+            department:proc1.attach.depart,
+            rate:'',
+            status:'2',
+        }
+        
+    }
   }
 })
 
