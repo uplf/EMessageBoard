@@ -4,8 +4,22 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/list/list",
+          "name": "edit",
+          "pathName": "pages/edit/edit",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "list",
           "pathName": "pages/list/list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "detail",
+          "pathName": "pages/detail/detail",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -13,20 +27,6 @@
         {
           "name": "pages/index/index",
           "pathName": "pages/index/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/edit/edit",
-          "pathName": "pages/index/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/reg/regs",
-          "pathName": "pages/reg/regs",
           "query": "",
           "launchMode": "default",
           "scene": null

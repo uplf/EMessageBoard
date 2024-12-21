@@ -1,128 +1,67 @@
 /* pages/detail/detail.wxss */
 
-/* .divLine{
-    background: #E0E3DA;
-    width: 100%;
-    height: 5rpx;
-}
-
-.divLine_b{
-    background: #E0E3DA;
-    width: 100%;
-    height: 3rpx;
-}
-
-.head{
-    font-weight: 600;
-}
-.textarea_display{
-    border-style: solid;
-    border-color: darkblue;
-    height: 550 px;
-    width:650 px;
-    white-space: wrap;
-}
-
-.test{
-    border-style:solid;
-    height:300 rpx;
-    width:250 rpx;
-} */
-
-/* .divLine {
-  height: 1px;
-  background-color: #e0e0e0;
-}
-
-.head {
-  padding: 10px;
-  background-color: #f5f5f5;
-}
-
-.head-text {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.form-section {
-  padding: 10px;
-}
-
-.label {
-  font-size: 14px;
-  color: #333;
-}
-
-.nested-section {
-  padding-left: 20px;
-}
-
-.divLine_b {
-  height: 1px;
-  background-color: #e0e0e0;
-  margin: 5px 0;
-}
-
-.textarea_display {
+.check_window{
   width: 100%;
-  height: 100px;
-  border: 1px solid #e0e0e0;
-  padding: 5px;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 14px;
+background-color: #fff;
+height: 200px;
 }
-
-.rating {
-  display: flex;
-  align-items: center;
-}
-
-.rating-value {
-  margin-left: 5px;
-}
-
-.required {
-  color: red;
-}
-
-.action-buttons,
-.satisfaction-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.action-button,
-.satisfaction-button,
-.publish-button,
-.delete-button {
-  padding: 5px 10px;
-  border: none;
+/* 设置输入框的基本样式 */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #007aff;
-  color: white;
   font-size: 14px;
+  background-color: #fff;
+  height: 40px;
 }
 
-.publish-button {
-  background-color: #28a745;
+.section-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.section-title1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.delete-button {
-  background-color: #dc3545;
-} */
+/* 当输入框禁用时改变背景色 */
+.input-field:disabled {
+  background-color: #f0f0f0;  /* 灰色背景，提醒用户不可编辑 */
+  color: #aaa;  /* 灰色文字 */
+  border: 1px solid #ddd;  /* 变淡的边框 */
+}
+
+/* 提示文字（placeholder）的样式 */
+.input-placeholder {
+  color: #999; /* 灰色提示文字 */
+  font-size: 13px;
+  text-align: center; /* 居中对齐提示文字 */
+  line-height: 40px;  /* 垂直居中对齐提示文字 */
+}
+
 
 /* 页面容器 */
 .page-container {
-  padding: 15px;
-  background-color: #f4f6f9; /* 更柔和的背景色 */
+  padding: 10px;
+  background-color: #f8f8f8;
 }
 
 /* 功能栏 */
 .section {
-  margin-bottom: 20px;
-  padding: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
   background-color: #ffffff;
-  border-radius: 10px; /* 圆角效果 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 更柔和的阴影 */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .title-text {
   font-size: 16px;
   color: #333;
@@ -145,20 +84,12 @@
 
 .picker {
   margin-top: 10px;
-  padding: 12px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
 }
 
-.input-field {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  background-color: #fff;
-}
 
 .checkbox {
   margin-top: 10px;
@@ -180,11 +111,11 @@
 
 /* 列表项 */
 .item-container {
-  padding: 15px;
+  padding: 10px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
 }
 
 .item-text {
@@ -217,34 +148,5 @@
 .divLine, .divLine_b {
   height: 1px;
   background-color: #e6e6e6;
-  margin: 12px 0;
-}
-
-/* 交互按钮 */
-.submit-btn, .reset-btn {
-  width: 100%;
-  padding: 15px;
-  margin-top: 25px;
-  background-color: #007aff;
-  color: white;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.submit-btn:hover, .reset-btn:hover {
-  background-color: #005bb5;
-}
-
-button {
-  padding: 10px 20px;
   margin: 10px 0;
-  background-color: #007aff;
-  color: white;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #005bb5;
 }
