@@ -1,0 +1,78 @@
+<!--pages/edit/edit.wxml-->
+<text>editpage</text>
+<view>
+<view class="page-container">
+    <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
+      <view class="divLine"></view>
+      <text>\n\n</text>
+      <view class="section-title">
+        <view class="section-title">流程确定</view>        
+      </view>
+    <view>
+    <view class="section">
+        <picker bindchange="mescate_change" value="{{mescate_index}}" range="{{GD.mescate_array}}">
+            处理方式: {{GD.mescate_array[mescate_index]}}
+        </picker>
+    </view>
+    <view>
+      <view class="section">
+        <picker wx:if="{{mescate_index==0}}" bindchange="department_change" value="{{department_index}}" range="{{GD.department_array}}">
+            发送部门: {{GD.department_array[department_index]}}
+        </picker>
+    </view>
+  </view>
+
+
+    <view class="check_window1">预览
+        <view class="divLine"></view>
+        <view wx:for="{{mes_data.solution}}" wx:key="item">            
+        <view class="text-left"><text>{{GD.department_array[item.department]}}</text></view>        
+        <view class="text-right"><text>{{GD.proc_unit_expl[item.cate_unit-1]}}</text></view> 
+            <view class="divLine"></view>
+        </view>
+    </view>
+    </view>
+    <text>\n\n</text>
+    <view class="section-title">留言选项</view>
+    
+    <view class="label">
+    <checkbox-group bindchange="checkbox_change">
+        <label>
+            <checkbox bind:tap="realname_change" value="1" checked="{{mes_data.realname.check}}">
+            实名 
+            </checkbox>            
+            <checkbox bindchange="reuse_change" value="2">
+            允许用作学代会建议
+            </checkbox>
+            <checkbox bindchange="public_change" value="3">
+            公开
+            </checkbox>
+            
+        </label>
+    </checkbox-group>
+    </view>
+
+    <text>\n\n</text>
+    <view class="section-title">留言内容</view>
+    <view class="input-field">
+              <input class="weui-input" name="input" placeholder="输入主题" bindchange="theme_change"/>
+    </view>
+    
+    <view class="text-xl">正文:</view>   
+              <textarea 
+              bindblur="description_change"
+              	adjust-position='true' 
+              maxlength='1000'
+              type="text"
+              class="check_window"
+              name="input" placeholder=""> </textarea>
+    <text>\n\n</text>
+    <button form-type="submit" bind:tap="onCommit"class="cu-btn bg-blue">确认</button>
+    <button form-type="reset" class="cu-btn bg-gray">重置</button>
+    </form>
+</view>
+</view> 
+
+
+
+

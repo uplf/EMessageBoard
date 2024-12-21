@@ -1,0 +1,33 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/menu/user_menu",
+    "pages/menu/admin_menu",
+    "pages/detail/user_info",
+    "pages/detail/detail",  
+    "pages/reg/regs",
+    "pages/list/list",
+    "pages/process/process",
+    "pages/edit/edit",
+    "pages/logs/logs",
+    "pages/home/home"
+    
+  ],
+  "window": {
+    
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default",
+    "navigationBarTitleText": "权益平台",
+    "navigationBarBackgroundColor": "#3A7B99",
+    "backgroundColor": "#434738",
+    "homeButton": true
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
+}

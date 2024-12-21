@@ -1,0 +1,82 @@
+<!-- pages/list/list.wxml -->
+<view class="page-container">
+    <!-- 功能栏 -->
+    <view class="section">
+        <block>
+            <text wx:if="{{mode=='0'}}" class="title-text">公开留言</text>
+            <text wx:if="{{mode=='1'}}" class="title-text">我的留言</text>
+            <text wx:if="{{mode=='2'}}" class="title-text">处理留言</text>
+            <text wx:if="{{mode=='3'}}" class="title-text">学代会查看</text>
+            <text wx:if="{{mode=='4'}}" class="title-text">调试</text>
+        </block>
+    </view>
+
+    <!-- 分隔线 -->
+    <view class="divLine"></view>
+
+    <!-- 筛选条件 -->
+    <view class="section">
+        <view bind:tap="filter_change" class="filter-toggle">
+            <view wx:if="{{filter_unfold}}" class="filter-text">筛选条件 点击折叠</view>
+            <view wx:else class="filter-text">筛选条件 点击展开</view>
+        </view>
+        <view wx:if="{{filter_unfold}}">
+            <view class="divLine_b"></view>
+            <form catchsubmit="formSubmit" catchreset="formReset">
+                <!-- 起始时间选择器 -->
+                <picker mode="date" bindchange="timeL_change" value="{{filter_alter.time.timeL}}" start="2015-09-01" disabled="{{filter_changeable.time=='false'}}" class="picker">
+                    起始时间：{{filter_alter.time.timeL || '请选择'}}
+                </picker>
+                
+                <!-- 结束时间选择器 -->
+                <picker mode="date" bindchange="timeH_change" value="{{filter_alter.time.timeH}}" start="2015-09-01" disabled="{{filter_changeable.time=='false'}}" class="picker">
+                    结束时间：{{filter_alter.time.timeH || '请选择'}}
+                </picker>
+
+                <!-- 留言状态选择器 -->
+                <picker bindchange="status_Change" value="{{filter_alter.status}}" range="{{GD.mes_status_array}}" disabled="{{filter_changeable.status=='false'}}" class="picker">
+                    留言状态：{{GD.mes_status_array[filter_alter.status]}}
+                </picker>
+
+                <!-- 留言用户账号输入框 -->
+                <input value="{{filter_alter.appli}}" disabled="{{filter_changeable.appli === 'false'}}" class="input-field" placeholder="筛选用户账号" />
+
+                <!-- 留言编号输入框 -->
+                <input value="{{filter_alter.num}}" disabled="{{filter_changeable.num === 'false'}}" class="input-field" placeholder="留言编号" />
+
+                <!-- 经过部门选择器 -->
+                <picker bindchange="departChange" value="{{filter_alter.department_status.department}}" range="{{GD.department_array}}" disabled="{{filter_changeable.depart_status.department=='false'}}" class="picker">
+                    经过部门：{{GD.department_array[filter_alter.department_status.department]}}
+                </picker>
+
+                <!-- 该部门的处理状态选择器 -->
+                <picker bindchange="depart_status_Change" value="{{filter_alter.department_status.depart_status}}" range="{{GD.unit_status_array}}" disabled="{{filter_changeable.depart_status.depart_status=='false'}}" class="picker">
+                    该部门的处理状态：{{GD.unit_status_array[filter_alter.department_status.depart_status]}}
+                </picker>
+
+                <!-- 提交按钮 -->
+                <button bind:tap="submit_handler" formType="submit" class="submit-btn">提交</button>
+                
+                <!-- 重置按钮 -->
+                <button bind:tap="resetFilters" form-type="reset" class="reset-btn">重置</button>
+            </form>
+        </view>
+    </view>
+
+    <!-- 分隔线 -->
+    <view class="divLine"></view>
+
+    <!-- 列表项 -->
+    <view class="section">
+        <view wx:for="{{list}}" wx:key="index" data-index="{{item}}" bind:tap="inspect_handler" class="item-container">
+            <text class="item-text">No.{{item.num}} 申请时间:{{item.mes_time}}</text>
+            <view class="item-status">
+                <text wx:if="{{item.realname}}" class="realname-text">实名</text>
+                <text class="theme-text">{{item.theme}}</text>
+                <text class="progress-text">总体进度: {{GD.mes_status_array[item.mes_status]}}</text>
+                <text wx:if="{{item.cur_solution}}" class="solution-text">到达部门: {{GD.department_array[item.cur_solution.department]}}</text>
+            </view>
+            <view class="divLine_b"></view>
+        </view>
+    </view>
+</view>

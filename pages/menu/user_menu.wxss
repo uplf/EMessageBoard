@@ -1,0 +1,8 @@
+/* pages/menu/user_menu.wxss */
+
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: text-center;
+}
