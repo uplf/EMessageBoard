@@ -135,11 +135,14 @@ Page({
     this.setData({'outcome_tmp.info':e.detail.value})
   },
   CommitProc(e){
+    
     var mes=this.data.p
+    var CPI=mes.solution.findIndex(item=>item.status=='2')
     var proc=this.data.process
     var proc1=this.data.outcome_tmp
     proc.status=this.data.proc_outp_link[proc1.ind]
     proc.display=proc1.info
+    proc.finish_time=Date()
     if(proc1.ind=='1'){
         var next_proc={
             cate_unit:proc1.attach.type,
@@ -147,8 +150,41 @@ Page({
             rate:'',
             status:'2',
         }
-        
+        mes.solution.splice(CPI+1,0,next_proc)
     }
+    mes.solution[CPI]=proc
+    if(proc.status=='3'){
+    if((mes.solution.length-1)<=CPI)mes.mes_status='4'
+    else{mes.solution[CPI+1].status='2'}
+    }
+    else if(proc.status=='6')mes.mes_status='4'
+    if(proc1.ind=='3')mes.status='3'
+    console.log(mes)
+    this.setData({p:mes})
+    
+  },
+  undraft_appli(e){
+      this.setData({'p.mes_status':'1'})
+        this.commit_appli()
+  },
+  stop_appli(e){
+    this.setData({'p.mes_status':'2'})
+      this.commit_appli()
+},
+pause_appli(e){
+    this.setData({'p.mes_status':'3'})
+      this.commit_appli()
+},
+cont_appli(e){
+    this.setData({'p.mes_status':'1'})
+      this.commit_appli()
+},
+rateA(e){
+    
+},
+  commit_appli:function(){
+    //申请修改
+    console.log(this.data.p)
   }
 })
 

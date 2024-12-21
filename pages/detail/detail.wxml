@@ -85,23 +85,23 @@
     <text>允许公开: {{p.public}}</text>
 </view>
 <view wx:if="{{mode=='1'}}">
-<button wx:if="{{p.mes_status=='0'}}">发布</button>
+<button wx:if="{{p.mes_status=='0'}}" bind:tap="undraft_appli">发布</button>
 <view wx:if="{{p.mes_status=='1'}}">
-    <button>暂停</button>
-    <button>中止</button>
+    <button bind:tap="pause_appli">暂停</button>
+    <button bind:tap="stop_appli">中止</button>
 </view>
-<button wx:if="{{p.mes_status=='2'}}">删除</button>
+<button bind:tap="del_appli" wx:if="{{p.mes_status=='2'}}">删除</button>
 <view wx:if="{{p.mes_status=='3'}}">
-    <button>继续</button>
-    <button>中止</button>
+    <button bind:tap="cont_appli">继续</button>
+    <button bind:tap="stop_appli">中止</button>
 </view>
 <view wx:if="{{p.mes_status=='4'}}">
-    <button>满意</button>
-    <button>不满意</button>
+    <button bind:tap="rateA">满意</button>
+    <button bind:tap="rateB">不满意</button>
 </view>
 </view>
 
-<view wx:if="{{mode=='3'&&p.mes_status=='3'}}">
+<view wx:if="{{mode=='3'&&p.mes_status=='1'}}">
     <button>进入交流页面</button>
     <form>处理
 <view class="divLine"></view>
