@@ -1,5 +1,5 @@
 <!--pages/menu/dep_menu.wxml-->
-<text>pages/menu/dep_menu.wxml</text>
+
 <view class="container">
     <text class="title">部门用户菜单</text>
 

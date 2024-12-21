@@ -1,9 +1,7 @@
 <!--index.wxml-->
 
-<text>\n\n\n\n\n\n</text>
-<text>\n\n\n\n\n\n</text>
-<view style="font-size: 25px; text-align: center; font-weight: 700;">欢迎使用</view>
 
-<text>\n\n\n\n\n\n</text>
+<view style="font-size: 25px; text-align: center; font-weight: 700; position: relative; left: 0rpx; top: 452rpx">欢迎使用</view>
+
 <text class="warningtext" wx:if="{{app.globalData.LOGIN_STATUS=='5'}}">该账户正在被审核，无法登录</text>
-<button bind:tap="login_appli" type="primary">登录</button>
+<button bind:tap="login_appli" type="primary" style="position: relative; left: 0rpx; top: 650rpx">登录</button>

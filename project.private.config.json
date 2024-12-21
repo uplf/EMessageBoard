@@ -4,15 +4,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "edit",
-          "pathName": "pages/edit/edit",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "list",
-          "pathName": "pages/list/list",
+          "name": "tiaotiao",
+          "pathName": "pages/menu/user_menu",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -25,8 +18,15 @@
           "scene": null
         },
         {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
+          "name": "edit",
+          "pathName": "pages/edit/edit",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "list",
+          "pathName": "pages/list/list",
           "query": "",
           "launchMode": "default",
           "scene": null

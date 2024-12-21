@@ -1,12 +1,14 @@
 <!--pages/menu/user_menu.wxml-->
-<text>pages/menu/user_menu.wxml</text>
+
 <view class="divider"></view>
-<text>\n\n\n\n\n\n</text>
+
+<view class="input-field3"></view>
+<view class="input-field3"></view>
 
 <view class="section-title">
-        <view class="text-center padding">欢迎使用</view>        
+        <view class="text-center padding" style="position: relative; left: 0rpx; top: 29rpx">欢迎使用</view>        
 </view>
-
+<view class="input-field3"></view>
 <view class="padding">
   <view class="cu-list menu">
     <view class="cu-item" bindtap="UserInfo">

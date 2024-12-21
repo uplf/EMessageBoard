@@ -2,7 +2,12 @@
 .container {
   padding: 20px;
 }
-
+.input-field3 {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  height: 40px;
+}
 /* 标题样式 */
 .section-title {
   font-size: 20px;

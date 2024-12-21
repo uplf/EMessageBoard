@@ -1,5 +1,4 @@
 <!--pages/menu/admin_menu.wxml-->
-<!-- <text>pages/menu/admin_menu.wxml</text> -->
 
 <view wx:if="{{GD.CUR_USER.user_type=='3'}}" class="padding">
   <view class="cu-list menu">

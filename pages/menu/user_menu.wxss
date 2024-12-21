@@ -6,3 +6,9 @@
   margin-bottom: 10px;
   padding: text-center;
 }
+.input-field3 {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  height: 40px;
+}

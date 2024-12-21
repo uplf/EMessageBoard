@@ -1,7 +1,4 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
-
-
 
 <view class="page-container">
     <view class="section">
@@ -147,7 +144,7 @@
     <view class="check_window">    
        <textarea class="textarea_display" value="{{mes_array[outcome_tmp.ind]}}"></textarea>
     </view>
-    <text>\n</text>
+    <view class="input-field3"></view>
     <button type="primary" bind:tap="CommitProc" 
     disabled="{{(!outcome_tmp.ind)||(outcome_tmp=='1'&&(!(outcome_tmp.attach.ind&&outcome_tmp.attach.type)))}}">
     提交</button>

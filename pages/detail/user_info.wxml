@@ -1,5 +1,7 @@
 <!--pages/detail/user_info.wxml-->
-<text>pages/detail/user_info.wxml</text>
+
+<view class="input-field3"></view>
+<view class="input-field3"></view>
 
 <view class="container">
    <view wx:if="{{checkee=='1'}}" class="section-title">用户资料</view>
@@ -46,12 +48,12 @@
     <view class="divLine"></view>
  </view>
 </view>
-<text>\n\n</text>
+<view class="input-field3"></view>
 <view>
   <view wx:if="{{checker=='2'}}">
     <button wx:if="{{checkee=='1'}}"class="action-button">查看公开留言</button>
     <button wx:if="{{checkee=='2'}}"class="action-button">查看满意度统计</button>
-    <text>\n</text>
+    <view class="input-field3"></view>
     <button wx:if="{{display_user.avail=='false'}}" class="action-button primary">启用账号</button>
     <button wx:if="{{display_user.avail=='true'}}" class="action-button warn">停用账号</button>
   </view>

@@ -1,7 +1,6 @@
 <!--pages/reg/regs.wxml-->
 <text>注册{{department_index}}</text>
 
-
 <view class="container">
   <view class="page-body">
     <form catchsubmit="formSubmit" catchreset="formReset"  bind:tap="formChange">
