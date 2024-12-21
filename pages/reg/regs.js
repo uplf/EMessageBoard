@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      APP:{},
       GD:{},
       reg_info:{
           username:'',
@@ -101,19 +102,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    var glo_data=getApp()
-    if(glo_data.globalData.LOGIN_STATUS!='4')wx.navigateBack({})
-    this.setData({GD:glo_data.globalData})
+    const glo_data=getApp()
+
     this.setData({
         //index: e.detail.value
-        reg_info:{...this.reg_info,unionid:options.unionid}
+        reg_info:{...this.reg_info,unionid:options.unionid},
+        GD:glo_data.globalData
       })
+      console.log('2')
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+    //getApp().globalData.LOGIN_STATUS='1'
 
   },
 
@@ -161,7 +164,6 @@ Page({
   },
   bindComfirmForm(){
       //登记
-      
     var user_cur=this.data.reg_info
 
     var user_define={  
@@ -178,6 +180,8 @@ Page({
     //##将user_define发送数据库，等待数据库记录
     var num='100812'//temp
     var flag='1'//temp
+    var glo_data=getApp()
+    console.log(glo_data.globalData.LOGIN_STATUS,'status')
 
     if(flag=='0'||(user_define.user_type=='2'&&(!user_define.depart_num))||(!user_define.user_type))
     {
@@ -185,37 +189,38 @@ Page({
         return
     }
     user_define.num=num
-    var glo_data=getApp()
+
     glo_data.globalData.CUR_USER=user_define
-    console.log(user_define.user_type)
     switch(user_define.user_type)
     {
         case "0":
             {
                 glo_data.globalData.LOGIN_STATUS='1'
-                wx.navigateTo({url: '/pages/menu/user_menu'});
+                wx.redirectTo({
+                    url: ('/pages/menu/user_menu'),
+                  })
                 break
             }
         case "1":
             {
                 glo_data.globalData.LOGIN_STATUS='3'
-                wx.navigateTo({url: '/pages/menu/admin_menu'});
+                wx.redirectTo({
+                    url: ('/pages/menu/admin_menu'),
+                  })
                 break
             }
         case "2":
             {
                 glo_data.globalData.LOGIN_STATUS='2'
-                wx.navigateTo({url: '/pages/menu/admin_menu'});
+                wx.redirectTo({
+                    url: ('/pages/menu/admin_menu'),
+                  })
                 break
             }
     }
-    console.log(user_define)
-    wx.navigateBack({
-      delta: 0,
-      success: (res) => {},
-      fail: (res) => {},
-      complete: (res) => {},
-    })
+
+
+
 
 
 

@@ -273,7 +273,7 @@
     </view> 
 <view class="divLine_b"></view>
 <text>内容:</text>
-<textarea class="textarea_display" value="{{p.discription}}" disabled="true"></textarea>
+<textarea class="textarea_display" value="{{p.description}}" disabled="true"></textarea>
 <view class="divLine_b"></view>
       <text>附件:</text>
    </view>

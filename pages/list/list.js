@@ -109,6 +109,7 @@ Page({
     this.setData({ mode: options.mode });
     var glo_data = getApp();
     this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
+    this.setData({'depart.id':glo_data.globalData.CUR_USER.depart_num})
     var list_tmp = [];
     for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
       list_tmp.push(glo_data.globalData.test_data_mes[i]);
@@ -231,8 +232,10 @@ Page({
   inspect_handler: function (e) {
     const APP = getApp();
     APP.globalData.CUR_MES = e.currentTarget.dataset.index;
+    var url_tep=[2,1,3,2,3]
+    console.log(url_tep[this.data.mode])
     wx.navigateTo({
-      url: '/pages/detail/detail?mode=1',
+      url: '/pages/detail/detail?mode='+url_tep[this.data.mode],
     });
   }
 });
