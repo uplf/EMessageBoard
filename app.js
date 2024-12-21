@@ -1,19 +1,48 @@
 // app.js
 App({
-  onLaunch() {
+  onLaunch: async function () {
+    const app = this
+    if (!wx.cloud) {
+      console.error("请使用 2.2.3 或以上的基础库以使用云能力");
+    } else {
+      wx.cloud.init({
+        env: "",
+        traceUser: true,
+      });
+      
+      try {
+        // 获取 openid
+        const openidRes = await wx.cloud.callFunction({
+          name: "getOpenid"
+        });
+        app.globalData.openid = openidRes.result.openid;
+
+        // 获取用户信息
+        const userInfoRes = await wx.cloud.callFunction({
+          name: "searchMessage",
+          data: {
+            list: "userinfo",
+            condition: {
+              openid: app.globalData.openid
+            }
+          }
+        });
+        app.globalData.userInfo = userInfoRes.result.data[0];
+
+      } catch (error) {
+        console.error('云函数调用失败:', error);
+      }
+    }
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
   },
   globalData: {
+    openid:"",
+    userInfo: null,
+
     test_union_id:'',
     CUR_MES:{},
     CUR_USER:{
