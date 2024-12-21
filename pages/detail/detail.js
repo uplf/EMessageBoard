@@ -9,15 +9,13 @@ Page({
       appli_unfold:'false',
       solu_unfold:'false',
       public_unfold:'false',
-      mode:'1',//1本人查看，2仅展示，3处理人查看
+      mode:'3',//1本人查看，2仅展示，3处理人查看
       outcome_tmp:{ind:'999',info:"",attach:{type:'',depart:''}},
       outcome_array:[{name:'完成处理',ind:'done'},{name:'完成指定',ind:'assigned'},{name:'要求补充材料/补充说明',ind:'req'},
                             {name:'处理搁置',ind:'pause'},{name:'处理失败',ind:'failed'}],
         mes_array:['留言','留言','补充内容','搁置原因','失败原因'],
-    proc_outp_link:['3','3','5','2','6'],
-    process:{},
     p:{
-        num:'',
+        /*num:'',
         user_account:"",
         realname_info:{check:'true', email:""},
         contract:'',
@@ -35,7 +33,31 @@ Page({
         mes_status:'1',
         mes_time:'',
         mes_finish_time:'',
-        cur_solution:''
+        */
+       
+        num:'100792',
+        usernum:'103291',
+        user_account:"accountname",
+        realname_info:{check:'true', email:"123456789@mail.scut.edu.cn"},
+        contract:"192837456@qq.com",
+
+        theme:"这里是问题的主题",
+        description:"这里是问题的正文，很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长end",
+        file_index:[],
+
+        solution:[{cate_unit:'0',department:'0',rate:'0',status:'3',display:"已指定下一步：后勤处",finish_time:"2024-5-9-18:00"},
+          {cate_unit:'1',department:'2',rate:'0',status:'2',display:"",finish_time:""}],
+        public:'false',
+        reuse:'true',
+        communicate:[{senderdep:'0',sendername:"处理员1",info:"这里是处理员1的话",user_read:'true',attachment:[],time:"2024-5-8-21:00"},
+          {senderdep:'-1',sendername:"accountname",info:"这里是申请者的话",user_read:'true',attachment:[],time:"2024-5-9-6:00"},
+          {senderdep:"0",sendername:"处理员2",info:"我是处理员2",user_read:'false',attachment:[],time:"2024-5-9-7:20"}],
+        cur_solution:  {cate_unit:'1',department:'2',rate:'0',status:'3',display:"",finish_time:""},
+
+        mes_status:'3',
+        mes_time:'2024-5-8-12:00',
+        mes_finish_time:'',
+      
         },
         mescate_index:'',
         department_index:'',
@@ -50,9 +72,11 @@ Page({
       
     var glo_data=getApp()
     this.setData({GD:glo_data.globalData})
-    this.setData({p:glo_data.globalData.CUR_MES,process:glo_data.globalData.CUR_MES.cur_solution})
-    this.setData({mode:e.mode})
+    //this.setData({p:glo_data.globalData.CUR_MES})//%%%%
+    //this.setData({mode:e.mode})//%%%%
+    this.setData({mode:'3'})
     glo_data.globalData.CUR_MES=''
+    
   },
 
   /**
