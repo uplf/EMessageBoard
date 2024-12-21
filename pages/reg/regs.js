@@ -17,7 +17,7 @@ Page({
           unionid:'',
           userschool:'',
       },
-      kkk:'d',
+
       type_index:'',
       department_index:'',
       school_index:'',
@@ -36,55 +36,37 @@ Page({
   
 
   bindTypePickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     
     this.setData({
-        //index: e.detail.value
-        //reg_info:{...this.reg_info,usertype:e.detail.value}
         'reg_info.usertype':e.detail.value
       })
-    console.log('type_index发送选择改变，携带值为', this.data.type_index)
   },
   bindSchoolPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    
     this.setData({
-        //index: e.detail.value
         'reg_info.userschool':e.detail.value
-        //reg_info:{...this.reg_info,userschool:e.detail.value}
       })
-    console.log('school_index发送选择改变，携带值为', this.data.school_index)
+ 
   },
   bindDepartmentPickerChange: function(e) {
-    console.log('school发送选择改变，携带值为', e.detail.value)
-    
+
     this.setData({
-      //index: e.detail.value
       'reg_info.userdepartment': e.detail.value
     })
-    console.log('department_index发送选择改变，携带值为', this.data.department_index)
   },
   password_change:function(event){
     this.setData({
-        //index: e.detail.value
-        //reg_info:{...this.reg_info,password:event.detail.value}
         'reg_info.password': event.detail.value
       })
   },
   contract_change:function(event){
     this.setData({
-        //index: e.detail.value
-        //reg_info:{...this.reg_info,contract:event.detail.value}
         'reg_info.contract': event.detail.value
 
       })
   },
   name_change:function(event){
     this.setData({
-        //index: e.detail.value
-        //reg_info:{...this.reg_info,name:event.detail.value}
         'reg_info.name': event.detail.value
-
       })
   },
 
@@ -109,7 +91,7 @@ Page({
         reg_info:{...this.reg_info,unionid:options.unionid},
         GD:glo_data.globalData
       })
-      console.log('2')
+
   },
 
   /**
@@ -168,27 +150,24 @@ Page({
 
     var user_define={  
         user_type:user_cur.usertype,
-        //num:'',
+        num:user_cur.unionid,
         usernum:user_cur.unionid, //union_id
         user_account:user_cur.name,    //name
         //realname_info:{check:'', email:""},
         contract:user_cur.contract,
         avail:(user_cur.usertype!='0'&&user_cur.password!="1111"?'0':'1'),
         depart_num:user_cur.userdepartment  ,
-        num:'',
 }
-    //##将user_define发送数据库，等待数据库记录
-    var num='100812'//temp
+    //##将user_define发送数据库，等待数据库记录 返回flag（失败）对应'0'
     var flag='1'//temp
     var glo_data=getApp()
-    console.log(glo_data.globalData.LOGIN_STATUS,'status')
 
     if(flag=='0'||(user_define.user_type=='2'&&(!user_define.depart_num))||(!user_define.user_type))
     {
         this.setData({errorflag:1})
         return
     }
-    user_define.num=num
+
 
     glo_data.globalData.CUR_USER=user_define
     switch(user_define.user_type)

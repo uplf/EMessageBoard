@@ -8,7 +8,7 @@ Page({
       //num 000000-999999
       mes_data:{
       user_account:'',//user_account
-      realname_info:{check:'true', email:""},//realname_info
+      realname_info:{check:'0', email:""},//realname_info
       contract:'',//contract **点击确定之后，从CUR_USER中渠道对应信息
 
       theme:'',//theme **bindchange时记录并写入
@@ -162,9 +162,10 @@ Page({
     this.setData({mes_data:mes_define})
     mes_define.solution[0].status='2'
     mes_define.cur_solution=mes_define.solution[0]
-    console.log(mes_define)
-    //###handle
-    //wx.navigateBack();
+    //##在这里将mes_define存到信息数据库中,这时可以分配微信id自建一个变量)和流水号->mes_define.num
+
+
+    wx.navigateBack();
   },
   /**
    * 用户点击右上角分享

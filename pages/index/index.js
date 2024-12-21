@@ -17,11 +17,17 @@ onLoad(){
       status=app.globalData.LOGIN_STATUS
       
       if(status=='0'){
-        //##获取unionid
-        var unionid='12421sdf12'//temp
-        //##查找用户库
-        //###return suc->flag(1/2/3)user_info fail->flag(0) notfound->(4)
-        status='4' //0未登录或登陆失败 1用户登录 2管理员登录 3维护员登录 4注册 5拒绝登录
+        //##获取id
+        var __id__='12421sdf12'//temp
+
+        //##查找用户库,得到res(失败)时记为'0',成功时返回__user__
+        var res='1'//temp
+        var __user__={}
+
+
+        if(res=='0')return
+        status=((!__user__)?'4':__user__.user_type+1)
+
         }
 
         this.setData({status_login:status})
@@ -31,8 +37,7 @@ onLoad(){
                     case '0':
                     case '5':return
                     case '4':{
-                        this.Navigate_Reg('100812')
-                        console.log('1')
+                        this.Navigate_Reg(__id__)
                         break}
                     case '2':
                     case '3': 
@@ -52,9 +57,7 @@ onLoad(){
   },
   
   Navigate_User: function(){
-      
     wx.navigateTo({url: '/pages/menu/user_menu'});
-
   },
   Navigate_Admin: function(){
     wx.navigateTo({url: '/pages/menu/admin_menu'});

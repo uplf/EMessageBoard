@@ -110,13 +110,15 @@ Page({
     var glo_data = getApp();
     this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
     this.setData({'depart.id':glo_data.globalData.CUR_USER.depart_num})
-    var list_tmp = [];
-    for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
-      list_tmp.push(glo_data.globalData.test_data_mes[i]);
-    }
+    this.AutoFilterSetup();
+    //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
+    var list_tmp = [];//tmp
+    //for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
+    //  list_tmp.push(glo_data.globalData.test_data_mes[i]);
+    //}
     this.setData({ list_unfiltered: list_tmp });
     this.setData({ list: list_tmp });
-    this.AutoFilterSetup();
+
     
   },
 

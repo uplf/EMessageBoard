@@ -94,23 +94,23 @@
 
 
        <view wx:if="{{mode=='1'}}">
-<button bind:tap="undraft_appli" wx:if="{{p.mes_status=='1'}}">发布</button>
-<view wx:if="{{p.mes_status=='2'}}">
+<button bind:tap="undraft_appli" wx:if="{{p.mes_status=='0'}}">发布</button>
+<view wx:if="{{p.mes_status=='1'}}">
     <button bind:tap="pause_appli">暂停</button>
     <button bind:tap="stop_appli">中止</button>
 </view>
-<button bind:tap="del_appli" wx:if="{{p.mes_status=='3'}}">删除</button>
-<view wx:if="{{p.mes_status=='4'}}">
+<button bind:tap="del_appli" wx:if="{{p.mes_status=='2'}}">删除</button>
+<view wx:if="{{p.mes_status=='3'}}">
     <button bind:tap="cont_appli">继续</button>
     <button bind:tap="stop_appli">中止</button>
 </view>
-<view wx:if="{{p.mes_status=='5'}}">
+<view wx:if="{{p.mes_status=='4'}}">
     <button bind:tap="rateA">满意</button>
     <button bind:tap="rateB">不满意</button>
 </view>
        </view>
 
-  <view wx:if="{{mode=='3'&&p.mes_status=='3'}}">
+  <view wx:if="{{mode=='3'&&p.mes_status=='1'}}">
     <view class="section">
       <form>
         <text class="section-title" >处理:</text>
