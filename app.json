@@ -11,8 +11,8 @@
     "pages/process/process",
     "pages/edit/edit",
     "pages/logs/logs",
-    "pages/home/home"
-    
+    "pages/home/home",
+    "pages/test/test"
   ],
   "window": {
     
@@ -22,6 +22,22 @@
     "navigationBarBackgroundColor": "#3A7B99",
     "backgroundColor": "#434738",
     "homeButton": true
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FF5F15",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "原页面"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "云函数测试页面"
+      }
+    ]
   },
   "style": "v2",
   "componentFramework": "glass-easel",
