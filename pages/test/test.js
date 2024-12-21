@@ -128,7 +128,7 @@ Page({
     this.setData({
       userData:{
         openid: app.globalData.openid,
-        userInfo: app.globalData.userInfo//还没有添加数据的逻辑，可以在控制台手动添加测试
+        userInfo: app.globalData.userInfo//还没有添加数据的逻辑，可以在控制台手动添加测试 
       }
     })
   }
