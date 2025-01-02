@@ -51,8 +51,9 @@ Page({
       }
     }).then(res => {
       //在这里操作返回值res
+      console.log(res.result.success)
       this.setData({
-        addData:res
+        addData:res.result.success
       })
     })
     .catch(console.error)// try-catch,异常会在控制台打印，可省略

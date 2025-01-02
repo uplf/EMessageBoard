@@ -18,14 +18,14 @@ onLoad(){
       
       if(status=='0'){
         //##获取id
-        var __id__='12421sdf12'//temp
+        var __id__=app.globalData.openid
 
         //##查找用户库,得到res(失败)时记为'0',成功时返回__user__
-        var res='1'//temp
-        var __user__={}
+        var res = '1'
+        var __user__=app.globalData.userInfo
+        if(!__user__) res = '0'
 
-
-        if(res=='0')return
+        if(res == '0')return
         status=((!__user__)?'4':__user__.user_type+1)
 
         }
