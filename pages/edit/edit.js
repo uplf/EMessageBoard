@@ -149,6 +149,22 @@ Page({
   onReachBottom() {
 
   },
+
+  add_mes: function (mes_define){
+    wx.cloud.callFunction({
+      name:"addMessage",//调用的云函数名称
+
+      //传参。没有的字段会被自动忽略
+      data:{
+        list:"MessageList",
+        data:mes_define,
+      }
+    }).then(res => {
+        return res.result.num
+    })
+    .catch(console.error)// try-catch,异常会在控制台打印，可省略
+  },
+
   onCommit(e){
 
     var mes_define=this.data.mes_data
@@ -163,7 +179,7 @@ Page({
     mes_define.solution[0].status='2'
     mes_define.cur_solution=mes_define.solution[0]
     //##在这里将mes_define存到信息数据库中,这时可以分配微信id自建一个变量)和流水号->mes_define.num
-
+    mes_define.num = this.add_mes(mes_define)
 
     wx.navigateBack();
   },

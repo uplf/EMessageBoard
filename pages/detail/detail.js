@@ -177,9 +177,26 @@ cont_appli(e){
 rateA(e){
     
 },
-  commit_appli:function(){
+commit_appli:function(){
     //##申请修改到信息数据库,用this.data.p来代替同号（wx分配id或num属性）信息
     console.log(this.data.p)
+    wx.cloud.callFunction({
+      name:"updateMessage",
+      data:{
+        list:"MessageList",
+        condition: {
+          num: this.data.p.num
+        },
+
+        updation: this.data.p
+      }
+    }).then(res => {
+      console.log(res)
+      this.setData({
+        updateData:res
+      })
+    })
+    .catch(console.error)
   }
 })
 

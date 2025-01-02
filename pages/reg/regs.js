@@ -144,6 +144,27 @@ Page({
   onShareAppMessage() {
 
   },
+
+  new_user: function (user_define){
+    wx.cloud.callFunction({
+      name:"addMessage",//调用的云函数名称
+
+      //传参。没有的字段会被自动忽略
+      data:{
+        list:"userinfo",
+        data:user_define,
+      }
+    }).then(res => {
+      //在这里操作返回值res
+      if(res.result.success==true)
+      {
+        return '1'
+      }
+      else return '0'
+    })
+    .catch(console.error)// try-catch,异常会在控制台打印，可省略
+  },
+
   bindComfirmForm(){
       //登记
     var user_cur=this.data.reg_info
@@ -159,7 +180,7 @@ Page({
         depart_num:user_cur.userdepartment  ,
 }
     //##将user_define发送数据库，等待数据库记录 返回flag（失败）对应'0'
-    var flag='1'//temp
+    var flag = this.new_user(user_define)
     var glo_data=getApp()
 
     if(flag=='0'||(user_define.user_type=='2'&&(!user_define.depart_num))||(!user_define.user_type))

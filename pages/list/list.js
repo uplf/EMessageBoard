@@ -101,7 +101,17 @@ Page({
   status_Change: function (e) {
     this.setData({ 'filter_alter.status': e.detail.value });
   },
-
+  search: function (filter){
+    wx.cloud.callFunction({
+      name:"searchMessage",
+      data:{
+        list:"MessageList",
+        condition: filter
+        }
+    }).then(res => {
+      return res.result.data
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -112,7 +122,7 @@ Page({
     this.setData({'depart.id':glo_data.globalData.CUR_USER.depart_num})
     this.AutoFilterSetup();
     //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
-    var list_tmp = [];//tmp
+    var list_tmp = this.search(this.data.filter);//tmp
     //for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
     //  list_tmp.push(glo_data.globalData.test_data_mes[i]);
     //}
