@@ -166,11 +166,11 @@ Page({
   },
 
   onCommit(e){
-
+    console.log('test')
     var mes_define=this.data.mes_data
     const appData=getApp()
     mes_define.user_account=appData.globalData.CUR_USER.num
-    if(mes_define.realname_info.check=='1')mes_define.realname_info.email=appData.globalData.CUR_USER.realname_info.email
+    if(mes_define.realname_info.check=='1'&&appData.globalData.CUR_USER.realname_info.email)mes_define.realname_info.email=appData.globalData.CUR_USER.realname_info.email
     mes_define.contract=appData.globalData.CUR_USER.contract
     mes_define.mes_status='1'
     mes_define.mes_time=Date()

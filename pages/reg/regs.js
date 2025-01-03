@@ -14,7 +14,7 @@ Page({
           userdepartment:'',
           contract:'',
           name:'',
-          unionid:'',
+          openid:'',
           userschool:'',
       },
 
@@ -88,7 +88,7 @@ Page({
 
     this.setData({
         //index: e.detail.value
-        reg_info:{...this.reg_info,unionid:options.unionid},
+        reg_info:{...this.reg_info,openid:options.openid},
         GD:glo_data.globalData
       })
 
@@ -146,6 +146,7 @@ Page({
   },
 
   new_user: function (user_define){
+      console.log("user_to_add",user_define)
     wx.cloud.callFunction({
       name:"addMessage",//调用的云函数名称
 
@@ -171,8 +172,8 @@ Page({
 
     var user_define={  
         user_type:user_cur.usertype,
-        num:user_cur.unionid,
-        usernum:user_cur.unionid, //union_id
+        num:user_cur.openid,
+        openid:user_cur.openid, //union_id
         user_account:user_cur.name,    //name
         //realname_info:{check:'', email:""},
         contract:user_cur.contract,

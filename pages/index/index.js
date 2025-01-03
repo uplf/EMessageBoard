@@ -19,15 +19,16 @@ onLoad(){
       if(status=='0'){
         //##获取id
         var __id__=app.globalData.openid
+        
 
         //##查找用户库,得到res(失败)时记为'0',成功时返回__user__
         var res = '1'
-        var __user__=app.globalData.userInfo
-        if(!__user__) res = '0'
-
-        if(res == '0')return
-        status=((!__user__)?'4':__user__.user_type+1)
-
+        let __user__=app.globalData.userInfo
+        console.log(__user__)
+        
+        //if(res == '0')return
+        status=((typeof(__user__)==='undefined')?'4':__user__.user_type+1)
+        
         }
 
         this.setData({status_login:status})
@@ -35,17 +36,17 @@ onLoad(){
                 switch (status)
                 {
                     case '0':
-                    case '5':return
-                    case '4':{
+                    case '05':return
+                    case '04':{
                         this.Navigate_Reg(__id__)
                         break}
-                    case '2':
-                    case '3': 
+                    case '02':
+                    case '03': 
                         {
                             this.Navigate_Admin()
                             break;
                          }
-                        case '1': 
+                        case '01': 
                         {
                             this.Navigate_User()
                             break;
@@ -63,6 +64,6 @@ onLoad(){
     wx.navigateTo({url: '/pages/menu/admin_menu'});
   },
   Navigate_Reg: function(ID){
-    wx.navigateTo({url: '/pages/reg/regs?unionid='+ID});
+    wx.navigateTo({url: '/pages/reg/regs?openid='+ID});
   },
 })

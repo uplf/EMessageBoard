@@ -121,11 +121,13 @@ Page({
     this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
     this.setData({'depart.id':glo_data.globalData.CUR_USER.depart_num})
     this.AutoFilterSetup();
+    console.log("filter_info",this.data.filter)
     //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
     var list_tmp = this.search(this.data.filter);//tmp
     //for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
     //  list_tmp.push(glo_data.globalData.test_data_mes[i]);
     //}
+    console.log("list_info",list_tmp)
     this.setData({ list_unfiltered: list_tmp });
     this.setData({ list: list_tmp });
 
