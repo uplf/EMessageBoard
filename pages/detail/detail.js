@@ -170,6 +170,7 @@ Page({
 
     this.setData({p:mes})
     this.commit_appli()
+    wx.navigateBack()
   },
   undraft_appli(e){
       this.setData({'p.mes_status':'1'})
