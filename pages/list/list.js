@@ -30,6 +30,7 @@ Page({
       reuse: 'true',
       issue: 'false'
     },
+    cloud_filter:{},
     filter_alter: {},
     mode: '4', //0广场，1个人查看自己的，2部门查看, 3学代会查看,4调试
     filter_unfold: 'false',
@@ -52,7 +53,7 @@ Page({
         filter_assign.public = 'true';
         break;
       case '1':
-        var user = this.data.user.id;
+        var user = this.data.GD.openid;
         filter_assign.appli = user;
         break;
       case '2':
@@ -121,7 +122,8 @@ Page({
     this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
     this.setData({'depart.id':glo_data.globalData.CUR_USER.depart_num})
     this.AutoFilterSetup();
-    console.log("filter_info",this.data.filter)
+    this.defineCloudFilter();
+    console.log("filter_info",this.data.cloud_filter)
     //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
     var list_tmp = this.search(this.data.filter);//tmp
     //for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
@@ -191,6 +193,23 @@ Page({
   },
   formSubmit: function (e) {
   },
+  defineCloudFilter(){
+    var CF=Object();//cloudFilter
+    var FT=this.data.filter
+    if(FT.mes_status)CF.mes_status=FT.mes_status;
+    if(FT.appli)CF.usernum=FT.appli;
+    if(FT.num)CF.num=FT.num;
+    if(FT.department_status&&FT.department_status.department_num)
+    {
+        CF.cur_solution=Object();
+        CF.cur_solution.department=FT.department_status.departmentt;
+        CF.cur_solution.status=FT.department_status.depart_status;
+    }
+    if(FT.public)CF.public=FT.public;
+    if(FT.reuse)CF.reuse=FT.reuse;
+
+    this.setData({cloud_filter:CF})
+  },
   // 新增：根据筛选条件获取数据
   applyFilters: function () {
       var FA=this.data.filter_alter
@@ -208,7 +227,7 @@ Page({
          if(FA.appli&&(FA.appli!=x.usernum))continue
          if(FA.num&&FA.num!=x.num)continue
          if(FA.department_status.department&&FA.department_status.department!=x.cur_solution.department)continue
-         if(FA.department_status.depart_status&&FA.department_status.depart_status!=x.solution.status)
+         if(FA.department_status.depart_status&&FA.department_status.depart_status!=x.cur_solution.status)continue
          if(FA.public&&FA.public!=x.public)continue
          if(FA.reuse&&FA.reuse!=x.reuse)continue
           list_applied.push(x)
