@@ -103,6 +103,7 @@ Page({
     this.setData({ 'filter_alter.status': e.detail.value });
   },
   search: function (filter){
+      console.log("input-filter",filter)
     wx.cloud.callFunction({
       name:"searchMessage",
       data:{
@@ -125,10 +126,8 @@ Page({
     this.defineCloudFilter();
     console.log("filter_info",this.data.cloud_filter)
     //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
-    var list_tmp = this.search(this.data.filter);//tmp
-    //for (let i = 0; i < glo_data.globalData.test_data_mes.length; i++) {
-    //  list_tmp.push(glo_data.globalData.test_data_mes[i]);
-    //}
+    var list_tmp = this.search(this.data.cloud_filter);//tmp
+
     console.log("list_info",list_tmp)
     this.setData({ list_unfiltered: list_tmp });
     this.setData({ list: list_tmp });
@@ -197,7 +196,7 @@ Page({
     var CF=Object();//cloudFilter
     var FT=this.data.filter
     if(FT.mes_status)CF.mes_status=FT.mes_status;
-    if(FT.appli)CF.usernum=FT.appli;
+    if(FT.appli)CF.user_account=FT.appli;
     if(FT.num)CF.num=FT.num;
     if(FT.department_status&&FT.department_status.department_num)
     {
@@ -224,7 +223,7 @@ Page({
          if(FA.time.timeH&&FA.time.timeH<x.mes_time)continue
          if(FA.time.timeL&&FA.time.timeL>x.mes_time)continue
          if(FA.status&&FA.status!=x.mes_status)continue
-         if(FA.appli&&(FA.appli!=x.usernum))continue
+         if(FA.appli&&(FA.appli!=x.user_account))continue
          if(FA.num&&FA.num!=x.num)continue
          if(FA.department_status.department&&FA.department_status.department!=x.cur_solution.department)continue
          if(FA.department_status.depart_status&&FA.department_status.depart_status!=x.cur_solution.status)continue

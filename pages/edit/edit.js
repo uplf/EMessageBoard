@@ -91,6 +91,24 @@ Page({
   description_change:function(e){
     this.setData({'mes_data.description':e.detail.value})
 },
+onCommit(e){
+    console.log('test')
+    var mes_define=this.data.mes_data
+    const appData=getApp()
+    mes_define.user_account=appData.globalData.openid
+    if(mes_define.realname_info.check=='1'&&appData.globalData.CUR_USER.realname_info.email)mes_define.realname_info.email=appData.globalData.CUR_USER.realname_info.email
+    mes_define.contract=appData.globalData.CUR_USER.contract
+    mes_define.mes_status='1'
+    mes_define.mes_time=Date()
+    //CUR_USER.num=account
+    this.setData({mes_data:mes_define})
+    mes_define.solution[0].status='2'
+    mes_define.cur_solution=mes_define.solution[0]
+    //##在这里将mes_define存到信息数据库中,这时可以分配微信id自建一个变量)和流水号->mes_define.num
+    mes_define.num = this.add_mes(mes_define)
+
+    wx.navigateBack();
+  },
 
   /**
    *                     'mes_data.reuse':(e.detail.value.includes("2")?'1':'0'),
@@ -165,24 +183,7 @@ Page({
     .catch(console.error)// try-catch,异常会在控制台打印，可省略
   },
 
-  onCommit(e){
-    console.log('test')
-    var mes_define=this.data.mes_data
-    const appData=getApp()
-    mes_define.user_account=appData.globalData.CUR_USER.num
-    if(mes_define.realname_info.check=='1'&&appData.globalData.CUR_USER.realname_info.email)mes_define.realname_info.email=appData.globalData.CUR_USER.realname_info.email
-    mes_define.contract=appData.globalData.CUR_USER.contract
-    mes_define.mes_status='1'
-    mes_define.mes_time=Date()
-    //CUR_USER.num=account
-    this.setData({mes_data:mes_define})
-    mes_define.solution[0].status='2'
-    mes_define.cur_solution=mes_define.solution[0]
-    //##在这里将mes_define存到信息数据库中,这时可以分配微信id自建一个变量)和流水号->mes_define.num
-    mes_define.num = this.add_mes(mes_define)
 
-    wx.navigateBack();
-  },
   /**
    * 用户点击右上角分享
    */

@@ -65,7 +65,7 @@
               class="check_window"
               name="input" placeholder=""> </textarea>
     <view class="input-field3"></view>
-    <button form-type="submit" bind:tap="onCommit"class="cu-btn bg-blue">确认</button>
+    <button bind:tap="onCommit" class="cu-btn bg-blue">确认</button>
     <button form-type="reset" class="cu-btn bg-gray">重置</button>
     </form>
 </view>

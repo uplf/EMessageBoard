@@ -27,7 +27,7 @@ onLoad(){
         console.log(__user__)
         
         //if(res == '0')return
-        status=((typeof(__user__)==='undefined')?'4':__user__.user_type+1)
+        status=((typeof(__user__)==='undefined')?'04':__user__.user_type+1)
         
         }
 
