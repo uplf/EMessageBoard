@@ -14,6 +14,10 @@ Page({
       outcome_array:[{name:'完成处理',ind:'done'},{name:'完成指定',ind:'assigned'},{name:'要求补充材料/补充说明',ind:'req'},
                             {name:'处理搁置',ind:'pause'},{name:'处理失败',ind:'failed'}],
         mes_array:['留言','留言','补充内容','搁置原因','失败原因'],
+
+        proc_outp_link:['3','3','5','2','6'],  
+        process:{}, 
+        
     p:{
         num:'',
         user_account:"",
@@ -135,6 +139,7 @@ Page({
     var CPI=mes.solution.findIndex(item=>item.status=='2')
     var proc=this.data.process
     var proc1=this.data.outcome_tmp
+    console.log(this.data.proc_outp_link)
     proc.status=this.data.proc_outp_link[proc1.ind]
     proc.display=proc1.info
     proc.finish_time=Date()
@@ -180,15 +185,17 @@ rateA(e){
 commit_appli:function(){
     //##申请修改到信息数据库,用this.data.p来代替同号（wx分配id或num属性）信息
     console.log(this.data.p)
+    var p_update=this.data.p
+    delete p_update._id
     wx.cloud.callFunction({
       name:"updateMessage",
       data:{
         list:"MessageList",
         condition: {
-          num: this.data.p.num
+          num: p_update.num
         },
 
-        updation: this.data.p
+        updation: p_update
       }
     }).then(res => {
       console.log(res)

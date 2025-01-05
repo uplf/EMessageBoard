@@ -100,7 +100,9 @@ App({
         communicate:[{senderdep:'0',sendername:"处理员1",info:"这里是处理员1的话",user_read:'true',attachment:[],time:"2024-5-8-21:00"},
           {senderdep:'-1',sendername:"accountname",info:"这里是申请者的话",user_read:'true',attachment:[],time:"2024-5-9-6:00"},
           {senderdep:"0",sendername:"处理员2",info:"我是处理员2",user_read:'false',attachment:[],time:"2024-5-9-7:20"}],
-        cur_solution:  {cate_unit:'1',department:'2',rate:'0',status:'2',display:"",finish_time:""},
+        
+          
+          olution:  {cate_unit:'1',department:'2',rate:'0',status:'2',display:"",finish_time:""},
 
         mes_status:'1',
         mes_time:'2024-5-8-12:00',

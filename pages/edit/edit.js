@@ -11,6 +11,8 @@ Page({
       realname_info:{check:'0', email:""},//realname_info
       contract:'',//contract **点击确定之后，从CUR_USER中渠道对应信息
 
+
+
       theme:'',//theme **bindchange时记录并写入
       description:"",//discription  **bindchange时记录并写入
       file_index:[],//#

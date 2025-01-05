@@ -27,26 +27,27 @@ onLoad(){
         console.log(__user__)
         
         //if(res == '0')return
-        status=((typeof(__user__)==='undefined')?'04':__user__.user_type+1)
+        status=((typeof(__user__)==='undefined')?'4':__user__.user_type)
         
         }
 
         this.setData({status_login:status})
+        console.log(status)
                 // 普通登录器
-                switch (status)
+                switch (status.substr(-1))
                 {
                     case '0':
-                    case '05':return
-                    case '04':{
+                    case '5':return
+                    case '4':{
                         this.Navigate_Reg(__id__)
                         break}
-                    case '02':
-                    case '03': 
+                    case '2':
+                    case '3': 
                         {
                             this.Navigate_Admin()
                             break;
                          }
-                        case '01': 
+                        case '1': 
                         {
                             this.Navigate_User()
                             break;

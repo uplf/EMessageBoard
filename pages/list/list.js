@@ -103,7 +103,6 @@ Page({
     this.setData({ 'filter_alter.status': e.detail.value });
   },
   search: function (filter){
-      console.log("input-filter",filter)
     wx.cloud.callFunction({
       name:"searchMessage",
       data:{
@@ -111,7 +110,9 @@ Page({
         condition: filter
         }
     }).then(res => {
-      return res.result.data
+
+      this.setData({list_unfiltered:res.result.data})
+      this.setData({list:res.result.data})
     })
   },
   /**
@@ -121,16 +122,12 @@ Page({
     this.setData({ mode: options.mode });
     var glo_data = getApp();
     this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
-    this.setData({'depart.id':glo_data.globalData.CUR_USER.depart_num})
+    this.setData({'depart.id':glo_data.globalData.userInfo.depart_num})
     this.AutoFilterSetup();
     this.defineCloudFilter();
-    console.log("filter_info",this.data.cloud_filter)
     //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
-    var list_tmp = this.search(this.data.cloud_filter);//tmp
+    this.search(this.data.cloud_filter);//tmp
 
-    console.log("list_info",list_tmp)
-    this.setData({ list_unfiltered: list_tmp });
-    this.setData({ list: list_tmp });
 
     
   },
@@ -198,10 +195,10 @@ Page({
     if(FT.mes_status)CF.mes_status=FT.mes_status;
     if(FT.appli)CF.user_account=FT.appli;
     if(FT.num)CF.num=FT.num;
-    if(FT.department_status&&FT.department_status.department_num)
+    if(FT.department_status&&FT.department_status.department)
     {
         CF.cur_solution=Object();
-        CF.cur_solution.department=FT.department_status.departmentt;
+        CF.cur_solution.department=FT.department_status.department;
         CF.cur_solution.status=FT.department_status.depart_status;
     }
     if(FT.public)CF.public=FT.public;
