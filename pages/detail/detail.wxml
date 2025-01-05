@@ -142,7 +142,7 @@
       </view>
     <view class="divLine"></view>
     <view class="check_window">    
-       <textarea class="textarea_display" value="{{mes_array[outcome_tmp.ind]}}"></textarea>
+       <textarea bindblur="display_change" class="textarea_display" value="{{mes_array[outcome_tmp.ind]}}"></textarea>
     </view>
     <view class="input-field3"></view>
     <button type="primary" bind:tap="CommitProc" 

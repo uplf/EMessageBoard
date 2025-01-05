@@ -36,18 +36,18 @@ onLoad(){
                 // 普通登录器
                 switch (status.substr(-1))
                 {
-                    case '0':
+
                     case '5':return
                     case '4':{
                         this.Navigate_Reg(__id__)
                         break}
-                    case '2':
-                    case '3': 
+                    case '1':
+                    case '2': 
                         {
                             this.Navigate_Admin()
                             break;
                          }
-                        case '1': 
+                        case '0': 
                         {
                             this.Navigate_User()
                             break;

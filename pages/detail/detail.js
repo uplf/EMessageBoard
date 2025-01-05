@@ -47,9 +47,11 @@ Page({
   onLoad(e) {
       
     var glo_data=getApp()
+    this.setData({process:glo_data.globalData.CUR_MES.cur_solution})
     this.setData({GD:glo_data.globalData})
     this.setData({p:glo_data.globalData.CUR_MES})//%%%%
     this.setData({mode:e.mode})//%%%%
+    
     glo_data.globalData.CUR_MES=''
     
   },
@@ -133,6 +135,9 @@ Page({
   info_change(e){
     this.setData({'outcome_tmp.info':e.detail.value})
   },
+  display_change(e){
+    this.setData({'process.display':e.detail.value})
+  },
   CommitProc(e){
     
     var mes=this.data.p
@@ -141,7 +146,7 @@ Page({
     var proc1=this.data.outcome_tmp
     console.log(this.data.proc_outp_link)
     proc.status=this.data.proc_outp_link[proc1.ind]
-    proc.display=proc1.info
+    //proc.display=proc1.info
     proc.finish_time=Date()
     if(proc1.ind=='1'){
         var next_proc={
@@ -159,6 +164,9 @@ Page({
     }
     else if(proc.status=='6')mes.mes_status='4'
     if(proc1.ind=='3')mes.status='3'
+
+    if(CPI<mes.solution.length-1)mes.cur_solution=mes.solution[CPI+1]
+    else mes.cur_solution=mes.solution[CPI]
 
     this.setData({p:mes})
     this.commit_appli()

@@ -57,8 +57,7 @@
                 <!-- 提交按钮 -->
                 <button bind:tap="submit_handler" formType="submit" class="submit-btn">提交</button>
                 
-                <!-- 重置按钮 -->
-                <button bind:tap="resetFilters" form-type="reset" class="reset-btn">重置</button>
+
             </form>
         </view>
     </view>

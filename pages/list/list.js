@@ -19,6 +19,7 @@ Page({
       reuse: '',
       issue: 'true'
     },
+
     filter_changeable: {
       time: 'true',
       status: 'true',
@@ -74,7 +75,8 @@ Page({
         filter_alterable.issue = 'true';
         break;
     }
-    this.setData({ filter: filter_assign, filter_changeable: filter_alterable, filter_alter: filter_assign });
+    this.setData({ filter: filter_assign, filter_changeable: filter_alterable });
+    this.setData({filter_alter: this.data.filter})
   },
 
   timeH_change: function (e) {
@@ -120,13 +122,7 @@ Page({
    */
   onLoad(options) {
     this.setData({ mode: options.mode });
-    var glo_data = getApp();
-    this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
-    this.setData({'depart.id':glo_data.globalData.userInfo.depart_num})
-    this.AutoFilterSetup();
-    this.defineCloudFilter();
-    //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
-    this.search(this.data.cloud_filter);//tmp
+
 
 
     
@@ -143,7 +139,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    console.log("newewewe")
+    var glo_data = getApp();
+    this.setData({ GD: glo_data.globalData, user: { ...this.data.user, id: glo_data.globalData.CUR_USER.num } });
+    this.setData({'depart.id':glo_data.globalData.userInfo.depart_num})
+    this.AutoFilterSetup();
+    this.defineCloudFilter();
+    //##在这里发送this.data.filter作为筛选条件，返回值放到list_tmp中
+    this.search(this.data.cloud_filter);//tmp
   },
 
   /**
@@ -250,6 +253,7 @@ Page({
     });
     // 重新加载列表数据
     this.AutoFilterSetup();
+    
     this.applyFilters(); // 如果您有applyFilters方法来根据条件过滤数据
   },
   submit_handler: function (e) {
