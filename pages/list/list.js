@@ -50,8 +50,8 @@ Page({
     var filter_alterable = this.data.filter_changeable;
     switch (mode) {
       case '0':
-        filter_alterable.public = 'false';
-        filter_assign.public = 'true';
+        filter_alterable.public = '0';
+        filter_assign.public = '1';
         break;
       case '1':
         var user = this.data.GD.openid;

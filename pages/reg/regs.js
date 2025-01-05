@@ -192,6 +192,7 @@ Page({
 
 
     glo_data.globalData.CUR_USER=user_define
+    if(user_define.avail=='0')wx.navigateBack()
     switch(user_define.user_type)
     {
         case "0":

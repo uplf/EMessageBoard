@@ -1,45 +1,9 @@
 <!--pages/test/test.wxml-->
-<text>\n\n</text>
-<button type="primary" bindtap="add">添加数据</button>
-<text>\n\n</text>
-
-<view wx:for="{{addData}}">
-{{index}} :  {{item}}
-</view>
-
-<text>\n\n</text>
-<button type="primary" bindtap="search">查找数据</button>
-<text>\n\n</text>
-
-<view wx:for="{{searchData}}">
-{{index}} : 
-  <view wx:for="{{item}}">
-    {{index}} : {{item}}
-  </view>
-</view>
-
-<text>\n\n</text>
-<button type="primary" bindtap="update">修改数据</button>
-<text>\n\n</text>
-
-<view wx:for="{{updateData}}">
-{{index}} :  {{item}}
-</view>
-
-<text>\n\n</text>
-<button type="primary" bindtap="remove">删除数据</button>
-<text>\n\n</text>
-
-<view wx:for="{{removeData}}">
-{{index}} :  {{item}}
-</view>
-
-<text>\n\n</text>
-<button type="primary" bindtap="display">用户数据展示(控制台也有输出）</button>
-<text>\n\n</text>
-
-<view wx:for="{{userData}}">
-{{index}} :  {{item}}
-</view>
-
-
+<text>欢迎！
+ 
+ 
+ 
+ 
+</text>
+<button type="primary" bindtap="public">进入广场</button>
+<text></text>

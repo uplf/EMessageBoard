@@ -14,7 +14,7 @@
         </view>
        <view wx:if="{{appli_unfold}}">
       <view class="input-field" bindtap="Appacount">
-       <view class=content">申请人账户: \t\t {{p.user_account}}</view>
+       <view class=content">申请人账户:  {{p.user_account}}</view>
       </view>
       <view class="divLine_b"></view>
       <view class="input-field" bindtap="Name">

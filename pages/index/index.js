@@ -14,25 +14,24 @@ onLoad(){
 
       var status     
       const app=getApp()
-      status=app.globalData.LOGIN_STATUS
+      status='5'
       
-      if(status=='0'){
-        //##获取id
-        var __id__=app.globalData.openid
-        
-
-        //##查找用户库,得到res(失败)时记为'0',成功时返回__user__
-        var res = '1'
         let __user__=app.globalData.userInfo
+        let __id__=app.globalData.openid
         console.log(__user__)
-        
-        //if(res == '0')return
         status=((typeof(__user__)==='undefined')?'4':__user__.user_type)
-        
+
+        if(status!='4'&&__user__.avail=='0')
+        {
+            var app0=getApp()
+            app0.globalData.user_demo=app0.globalData.userInfo
+            wx.navigateTo({
+                url: '/pages/detail/user_info?CkEE=2&CkER=1',
+              })
         }
 
         this.setData({status_login:status})
-        console.log(status)
+
                 // 普通登录器
                 switch (status.substr(-1))
                 {
